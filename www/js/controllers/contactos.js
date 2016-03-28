@@ -145,9 +145,15 @@ angular.module('starter.controllers')
 	var contactoEliminado=function(data){
 		Message.hideLoading();
 		socket.getSocket().removeListener("eliminaPersona",contactoEliminado)
-		Message.alert($rootScope.idioma.Notificaciones[7],data+$rootScope.idioma.Contactos[15],function(){
-			$scope.loadContactos();
-		})
+		if(data){
+			Message.alert($rootScope.idioma.Notificaciones[7],data+$rootScope.idioma.Contactos[15],function(){
+				$scope.loadContactos();
+			})
+		}else{
+			Message.alert($rootScope.idioma.Notificaciones[7],$rootScope.idioma.General[7],function(){
+				$scope.loadContactos();
+			})
+		}
 	}
 	$scope.cancelarSolicitud=function(data){
 			Message.confirm($rootScope.idioma.Notificaciones[7],$rootScope.idioma.Contactos[19]+data.Correo+"?",function(res){
@@ -160,11 +166,12 @@ angular.module('starter.controllers')
 			},null,null,false)
 	}
 	$scope.eliminarContacto=function(data){
+		
 		Message.confirm($rootScope.idioma.Notificaciones[11],$rootScope.idioma.Contactos[12]+data.Correo+"?",function(res){
 			if(socket.isConnected()) {
 				socket.getSocket().removeListener("eliminaPersona",contactoEliminado)
 				socket.getSocket().on("eliminaPersona",contactoEliminado)
-				socket.getSocket().emit("eliminaPersona",data.Correo,$rootScope.Usuario.Id)
+				socket.getSocket().emit("eliminaPersona",data.Correo)
 				Message.showLoading($rootScope.idioma.General[8]);
 			}else Message.alert($rootScope.idioma.Notificaciones[11],$rootScope.idioma.General[7],function(){})
 		},null,null,false)
@@ -182,9 +189,15 @@ angular.module('starter.controllers')
 	var aceptaContacto=function(data){
 		Message.hideLoading();
 		socket.getSocket().removeListener("aceptaPersona",aceptaContacto)
-		Message.alert($rootScope.idioma.Notificaciones[7],data+$rootScope.idioma.Contactos[4],function(){
-			$scope.loadContactos();
-		})
+		if(data){
+			Message.alert($rootScope.idioma.Notificaciones[7],data+$rootScope.idioma.Contactos[4],function(){
+				$scope.loadContactos();
+			})
+		}else{
+			Message.alert($rootScope.idioma.Notificaciones[7],$rootScope.idioma.General[7],function(){
+				$scope.loadContactos();
+			})
+		}
 	}
 
 })
