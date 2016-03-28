@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin id="com.jabb.plugin.uber" version="0.2.5">
+    <name>Uber Cordova</name>
+    <description>Cordova Uber Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>uber,test</keywords>
+    <repo>https://github.com/bradenericson/Uber-Cordova-Plugin.git</repo>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Uber">
+                <param name="android-package" value="com.jabb.plugin.uber.Uber" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+	<config-file target="AndroidManifest.xml" parent="application">
+	<intent-filter android:label="@string/launcher_name">
+		<action android:name="android.intent.action.MAIN" />
+		<action android:name="android.intent.action.VIEW" />
+		<category android:name="android.intent.category.LAUNCHER" />
+		<category android:name="android.intent.category.DEFAULT" />
+		<category android:name="android.intent.category.BROWSABLE" />
+		<data android:scheme="uber" />
+    </intent-filter>
+	</config-file>
+        <source-file src="src/android/Uber.java" target-dir="src/com/jabb/plugin/uber" />
+	<source-file src="src/android/UberUtils.java" target-dir="src/com/jabb/plugin/uber" />
+        <js-module src="uber.js" name="uber">
+            <runs />
+        </js-module>
+    </platform>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Uber">
+                <param name="ios-package" value="Uber" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/Uber.h" target-dir="Uber" />
+        <source-file src="src/ios/Uber.m" target-dir="Uber" />
+        
+        <js-module src="uber.js" name="uber">
+            <runs />
+        </js-module>
+    </platform>
+</plugin>
