@@ -884,8 +884,8 @@ margin-right:1vh;
 }
 .mapa-descripcion-evento-rating.uber>button{
 	padding: 1vh 7vh;
-    background: #353535;
-    color: #fff;
+    background: #0A5460;
+    color: #F5F5F5;
     font-size: 3vh;
     border-radius: 5px !important;
     margin-top: 2vh;
@@ -1644,8 +1644,8 @@ ionic-datepicker.2{
 }
 .mapa-descripcion-evento-rating.uber>button{
 	    font-size: 5vh;
-    background: #353535;
-    color: #fff;
+    /*background: #353535;
+    color: #fff;*/
     border-radius: 5px !important;
     padding: 2vh 15vh;
     margin-top: 1vh;

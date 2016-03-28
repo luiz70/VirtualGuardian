@@ -100,7 +100,14 @@ if (img.complete) img.onload();
 	}
 	
 	$scope.conectado=$rootScope.$on("socket.connect",$scope.conectedonce)
-	
+	document.addEventListener("pause", function(){
+		socket.disconnect();
+	}, false);
+	document.addEventListener("resume", function(){
+		$scope.conectado();
+		$scope.conectado=$rootScope.$on("socket.connect",$scope.conectedonce)
+		socket.connect();
+	})
 		
 	$scope.menuWidth=function(){
 		if(window.innerHeight> window.innerWidth)return window.innerWidth*0.85;

@@ -2,18 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\libs\geocalc.jar"
+        jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="3d49f562270aff8484dcd44ce8dc9ae34bec4fee">
-        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\geocalc_f267825892e73920f1d0a3064d13b7e24f047559.jar" />
-    </item>
-    <item
-        jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\libs\android-support-v13.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6623c91d454d2939626814676781c0e694717eda">
-        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\android-support-v13_afcc46195fef75bc928faf52d0a56400e23285b0.jar" />
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_1a551d6adbba9e331795d6f0c70252c8b26810be.jar" />
     </item>
     <item
         jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
@@ -23,11 +16,18 @@
         <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_534446716da4b84090c611baec12eff27a9976c8.jar" />
     </item>
     <item
-        jar="C:\Users\Sistemas\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_2e06d420b4f4328ebd0bc896edc3d6aacd9d1bea.jar" />
+        sha1="09dc2dd97060ed38f6c94d2c777ce7fbc9a2c9cb">
+        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_1825fda97510e9f2bccbe112735c8ce1a144b172.jar" />
+    </item>
+    <item
+        jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\libs\geocalc.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3d49f562270aff8484dcd44ce8dc9ae34bec4fee">
+        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\geocalc_f267825892e73920f1d0a3064d13b7e24f047559.jar" />
     </item>
     <item
         jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\libs\gcm.jar"
@@ -37,13 +37,6 @@
         <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\gcm_f57150c57ffaf17abbad9ac7a6ec73092d0991ce.jar" />
     </item>
     <item
-        jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_1a551d6adbba9e331795d6f0c70252c8b26810be.jar" />
-    </item>
-    <item
         jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\libs\org.apache.http.legacy.jar"
         jumboMode="false"
         revision="23.0.2"
@@ -51,11 +44,18 @@
         <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\org.apache.http.legacy_087bc0a4c4a4160b06ffeacd836d4b8a91dc1428.jar" />
     </item>
     <item
-        jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
+        jar="C:\Users\Sistemas\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="09dc2dd97060ed38f6c94d2c777ce7fbc9a2c9cb">
-        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_1825fda97510e9f2bccbe112735c8ce1a144b172.jar" />
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_2e06d420b4f4328ebd0bc896edc3d6aacd9d1bea.jar" />
+    </item>
+    <item
+        jar="C:\inetpub\wwwroot\virtualguardian\platforms\android\libs\android-support-v13.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6623c91d454d2939626814676781c0e694717eda">
+        <dex dex="C:\inetpub\wwwroot\virtualguardian\platforms\android\build\intermediates\pre-dexed\debug\android-support-v13_afcc46195fef75bc928faf52d0a56400e23285b0.jar" />
     </item>
 
 </items>

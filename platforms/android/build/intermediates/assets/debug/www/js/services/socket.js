@@ -93,7 +93,7 @@ angular.module('starter.services')
     })
 	return socket;
 	}
-       
+      
     return {
 		inicializa:function(){
 			return inicializa()
@@ -105,6 +105,11 @@ angular.module('starter.services')
             if(!conectado)socket.connect();
             return true;
          },
+		 disconnect:function(){
+			if(socket){
+			 	socket.disconnect();
+			 }
+		 },
          isConnected:function(){
             return socket.connected;
          },
