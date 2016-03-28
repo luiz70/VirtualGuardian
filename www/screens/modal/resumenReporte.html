@@ -1,0 +1,15 @@
+<ion-header-bar style="    position: relative;">
+   <button class="button button-clear"  ng-click="cierraResumen()" >{{idioma.General[6]}}</button>
+   <!--h1 class="title show">{{idioma.Auto[3]}}</h1-->
+   <button class="button button-clear"  ng-click="guardaReporte()" >{{idioma.General[2]}}</button>
+</ion-header-bar>
+<ion-content ><!--'data:image/png;base64,'+main.user.imageData-->
+	<div class="reporte-resumen-miniatura" ng-show="reporte.Imagen"><img src="img/iconos/blank.png" style="background-image:{{'url(data:image/png;base64,'+reporte.Imagen+')'}}" ></div>
+	<ion-item class="item-avatar item-icon-right reporte-item-contenido" >				
+		<div class="mapa-estatico" style="background-image:url({{reporte.staticMap | StaticMap}})"></div>
+		<img ng-src={{"img/iconos/reportes/"+reporte.Asunto+".png"}} class="friends-avatar">
+		<h2>{{{Asunto:reporte.Asunto,Estado:reporte.Parsed.Estado} | tituloReporte:this}}</h2>
+		<p>{{reporte.Parsed | subtituloReporte:this }}</p>
+		<p class="reporte-item-fecha">{{(reporte.Fecha.valor)?idioma.Reportes[9]+reporte.Fecha.valor:idioma.Reportes[15]}}</p>
+	</ion-item>
+</ion-content>
