@@ -39,10 +39,27 @@
         "is_top_level": true,
         "variables": {}
     },
-    "ionic-plugin-keyboard": {
+    "com.jabb.plugin.uber": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bradenericson/Uber-Cordova-Plugin",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-network-information": {
         "source": {
             "type": "registry",
-            "id": "ionic-plugin-keyboard"
+            "id": "cordova-plugin-network-information@~1.2.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-app-version": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-app-version"
         },
         "is_top_level": true,
         "variables": {}
@@ -79,10 +96,27 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-network-information": {
+    "ionic-plugin-keyboard": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-network-information@~1.2.0"
+            "id": "ionic-plugin-keyboard"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.phonegap.plugins.PushPlugin": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phonegap-build/PushPlugin.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "net.yoik.cordova.plugins.screenorientation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-orientation"
         },
         "is_top_level": true,
         "variables": {}
@@ -97,8 +131,9 @@
     },
     "cordova-sqlite-storage": {
         "source": {
-            "type": "registry",
-            "id": "cordova-sqlite-storage"
+            "type": "git",
+            "url": "https://github.com/litehelpers/Cordova-sqlite-storage.git",
+            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}
@@ -107,32 +142,6 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-x-toast"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "com.phonegap.plugins.PushPlugin": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phonegap-build/PushPlugin.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-app-version": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-app-version"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "com.jabb.plugin.uber": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bradenericson/Uber-Cordova-Plugin",
-            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}

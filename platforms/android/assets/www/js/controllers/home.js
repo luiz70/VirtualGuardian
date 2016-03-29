@@ -104,8 +104,8 @@ if (img.complete) img.onload();
 		socket.disconnect();
 	}, false);
 	document.addEventListener("resume", function(){
-		$scope.conectado();
-		$scope.conectado=$rootScope.$on("socket.connect",$scope.conectedonce)
+		//$scope.conectado();
+		//$scope.conectado=$rootScope.$on("socket.connect",$scope.conectedonce)
 		socket.connect();
 	})
 		

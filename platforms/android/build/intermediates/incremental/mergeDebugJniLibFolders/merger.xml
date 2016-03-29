@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\inetpub\wwwroot\virtualguardian\platforms\android\libs"><file name="gcm.jar" path="C:\inetpub\wwwroot\virtualguardian\platforms\android\libs\gcm.jar"/></source></dataSet><dataSet config="debug"><source path="C:\inetpub\wwwroot\virtualguardian\platforms\android\src\debug\jniLibs"/></dataSet></merger>

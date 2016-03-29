@@ -1,7 +1,7 @@
 {
   "name": "virtualguardian",
   "version": "1.1.1",
-  "description": "VirtualGuardian: An Ionic project",
+  "description": "virtualguardian: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -20,26 +20,17 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard",
+    "cordova-plugin-network-information",
+    "cordova-plugin-app-version",
     "cordova-plugin-camera",
     "cordova-plugin-geolocation",
     "cordova-plugin-globalization",
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-network-information",
-    "cordova-plugin-screen-orientation",
-    "cordova-sqlite-storage",
-    "cordova-plugin-x-toast",
-    {
-      "locator": "https://github.com/phonegap-build/PushPlugin.git",
-      "id": "com.phonegap.plugins.PushPlugin"
-    },
-    {
-      "locator": "https://github.com/bradenericson/Uber-Cordova-Plugin",
-      "id": "com.jabb.plugin.uber"
-    }
+    "ionic-plugin-keyboard@1.0.8",
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ]
 }

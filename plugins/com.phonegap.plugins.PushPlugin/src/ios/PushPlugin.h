@@ -26,30 +26,49 @@
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 #import <Cordova/CDVPlugin.h>
+#import <PushKit/PushKit.h>
+#import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <Socket_IO_Client_Swift/Socket_IO_Client_Swift-Swift.h>
 
 @interface PushPlugin : CDVPlugin
 {
     NSDictionary *notificationMessage;
+    NSDictionary *notificationMessageTemp;
     BOOL    isInline;
     NSString *notificationCallbackId;
     NSString *callback;
-    
+    int notificaciones;
+    BOOL background;
     BOOL ready;
+    BOOL inCall;
+    NSTimer *time;
+    SocketIOClient* socket;
+    BOOL SocketForeground;
+    BOOL SocketConected;
+    
 }
-
+@property BOOL  background;
 @property (nonatomic, copy) NSString *callbackId;
 @property (nonatomic, copy) NSString *notificationCallbackId;
 @property (nonatomic, copy) NSString *callback;
-
+@property (nonatomic,copy) CLLocationManager *locationManager;
+@property (nonatomic,retain) NSString *DistanciaAuto;
 @property (nonatomic, strong) NSDictionary *notificationMessage;
+@property (nonatomic, strong) NSDictionary *notificationMessageTemp;
+@property (nonatomic,copy) UILocalNotification * callNotification;
+@property (nonatomic,copy) SocketIOClient * socket;
 @property BOOL                          isInline;
+@property int notificaciones;
 
 - (void)register:(CDVInvokedUrlCommand*)command;
-
-- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+- (void)carLocation:(CDVInvokedUrlCommand*)command;
+- (void)cancelcall;
+- (void)aceptcall;
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-
+- (void)pushRegistry:(PKPushRegistry *)registry didReceiveIncomingPushWithPayload:(PKPushPayload *)payload forType:(NSString *)type;
 - (void)setNotificationMessage:(NSDictionary *)notification;
 - (void)notificationReceived;
+
 
 @end

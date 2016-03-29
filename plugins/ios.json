@@ -7,6 +7,12 @@
         "files": {}
     },
     "installed_plugins": {
+        "com.jabb.plugin.uber": {
+            "PACKAGE_NAME": "com.app.virtualguardian"
+        },
+        "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.app.virtualguardian"
+        },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         },
@@ -28,9 +34,6 @@
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         },
-        "cordova-plugin-screen-orientation": {
-            "PACKAGE_NAME": "com.app.virtualguardian"
-        },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         },
@@ -40,22 +43,19 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         },
-        "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "com.app.virtualguardian"
-        },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.app.virtualguardian"
-        },
-        "cordova-plugin-x-toast": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         },
         "com.phonegap.plugins.PushPlugin": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         },
-        "cordova-plugin-app-version": {
+        "net.yoik.cordova.plugins.screenorientation": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         },
-        "com.jabb.plugin.uber": {
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.app.virtualguardian"
+        },
+        "cordova-plugin-x-toast": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         }
     },

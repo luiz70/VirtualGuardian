@@ -1,4 +1,3 @@
-cordova.define("com.phonegap.plugins.PushPlugin.PushNotification", function(require, exports, module) {
 var PushNotification = function() {
 };
 
@@ -65,38 +64,7 @@ PushNotification.prototype.setApplicationIconBadgeNumber = function(successCallb
     cordova.exec(successCallback, errorCallback, "PushPlugin", "setApplicationIconBadgeNumber", [{badge: badge}]);
 };
 
-///-------------------------------------------------------------------
-// Call this to register for push notifications. Content of [options] depends on whether we are working with APNS (iOS) or GCM (Android)
-PushNotification.prototype.carLocation = function(successCallback, errorCallback, options) {
-    if (errorCallback == null) { errorCallback = function() {}}
-
-    if (typeof errorCallback != "function")  {
-        console.log("PushNotification.carLocation failure: failure parameter not a function");
-        return
-    }
-
-    if (typeof successCallback != "function") {
-        console.log("PushNotification.carLocation failure: success callback parameter must be a function");
-        return
-    }
-    cordova.exec(successCallback, errorCallback, "PushPlugin", "carLocation", [options]);
-};
-
 //-------------------------------------------------------------------
-PushNotification.prototype.setVariable = function(successCallback, errorCallback, options) {
-    if (errorCallback == null) { errorCallback = function() {}}
-
-    if (typeof errorCallback != "function")  {
-        console.log("PushNotification.setVar failure: failure parameter not a function");
-        return
-    }
-
-    if (typeof successCallback != "function") {
-        console.log("PushNotification.setVar failure: success callback parameter must be a function");
-        return
-    }
-    cordova.exec(successCallback, errorCallback, "PushPlugin", "setVariable", [options]);
-};
 
 if(!window.plugins) {
     window.plugins = {};
@@ -108,5 +76,3 @@ if (!window.plugins.pushNotification) {
 if (typeof module != 'undefined' && module.exports) {
   module.exports = PushNotification;
 }
-});
-

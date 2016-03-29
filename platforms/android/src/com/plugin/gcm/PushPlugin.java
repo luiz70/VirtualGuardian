@@ -2,12 +2,9 @@ package com.plugin.gcm;
 
 import android.app.NotificationManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.google.android.gcm.GCMRegistrar;
-
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -27,8 +24,6 @@ public class PushPlugin extends CordovaPlugin {
 
 	public static final String REGISTER = "register";
 	public static final String UNREGISTER = "unregister";
-	public static final String CAR = "carLocation";
-	public static final String SAVE = "setVariable";
 	public static final String EXIT = "exit";
 
 	private static CordovaWebView gWebView;
@@ -50,8 +45,8 @@ public class PushPlugin extends CordovaPlugin {
 
 		boolean result = false;
 
-		Log.v("Debug", "execute: action=" + action);
-		
+		Log.v(TAG, "execute: action=" + action);
+
 		if (REGISTER.equals(action)) {
 
 			Log.v(TAG, "execute: data=" + data.toString());
@@ -68,8 +63,6 @@ public class PushPlugin extends CordovaPlugin {
 				Log.v(TAG, "execute: ECB=" + gECB + " senderID=" + gSenderID);
 
 				GCMRegistrar.register(getApplicationContext(), gSenderID);
-				SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.app.virtualguardian", Context.MODE_PRIVATE);
-				prefs.edit().putString("Registered", "1").apply();
 				result = true;
 				callbackContext.success();
 			} catch (JSONException e) {
@@ -91,50 +84,6 @@ public class PushPlugin extends CordovaPlugin {
 			Log.v(TAG, "UNREGISTER");
 			result = true;
 			callbackContext.success();
-		}else if (CAR.equals(action)) {
-
-			try {
-				JSONObject jo = data.getJSONObject(0);
-
-				gWebView = this.webView;
-				String Estatus = (String) jo.get("Estatus");
-				String Latitud = (String) jo.get("Latitud");
-				String Longitud = (String) jo.get("Longitud");
-				
-				SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.app.virtualguardian", Context.MODE_PRIVATE);
-				prefs.edit().putString("Estatus", Estatus).apply();
-				//if(Estatus.equals("1")){
-				prefs.edit().putString("Latitud", Latitud).apply();
-				prefs.edit().putString("Longitud", Longitud).apply();
-				/*}else if(Estatus.equals("0")){
-				prefs.edit().putString("Latitud","").apply();
-				prefs.edit().putString("Longitud","").apply();
-				}*/
-				//GCMRegistrar.register(getApplicationContext(), gSenderID);
-				result = true;
-				callbackContext.success();
-			} catch (JSONException e) {
-				
-				result = false;
-				callbackContext.error(e.getMessage());
-			}
-
-		}else if (SAVE.equals(action)) {
-			try {
-				JSONObject jo = data.getJSONObject(0);
-				gWebView = this.webView;
-				String Key = jo.get("Key").toString();
-				String Value = jo.get("Value").toString();
-				SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.app.virtualguardian", Context.MODE_PRIVATE);
-				prefs.edit().putString(Key, Value).apply();
-				result = true;
-				callbackContext.success();
-			} catch (JSONException e) {
-				
-				result = false;
-				callbackContext.error(e.getMessage());
-			}
-			
 		} else {
 			result = false;
 			Log.e(TAG, "Invalid action : " + action);
@@ -176,33 +125,20 @@ public class PushPlugin extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         gForeground = true;
-        NotificationStack.cleanBar();
-        if(NotificationStack.notificaciones()){
-	        Bundle extras= new Bundle();
-	        extras.putBoolean("foreground", false);
-	        extras.putBoolean("coldstart", false);
-	        extras.putBoolean("resumed", false);
-	        sendExtras(extras);
-        }
     }
 
 	@Override
     public void onPause(boolean multitasking) {
         super.onPause(multitasking);
         gForeground = false;
-        
+        final NotificationManager notificationManager = (NotificationManager) cordova.getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
     }
 
     @Override
     public void onResume(boolean multitasking) {
         super.onResume(multitasking);
         gForeground = true;
-        NotificationStack.cleanBar();
-        Bundle extras= new Bundle();
-        extras.putBoolean("foreground", false);
-        extras.putBoolean("coldstart", false);
-        extras.putBoolean("resumed", false);
-        sendExtras(extras);
     }
 
     @Override
@@ -217,26 +153,6 @@ public class PushPlugin extends CordovaPlugin {
      * serializes a bundle to JSON.
      */
     private static JSONObject convertBundleToJson(Bundle extras)
-    {
-		try
-		{
-			JSONObject json;
-			json = new JSONObject().put("event", "message");
-			json.put("foreground", extras.getBoolean("foreground"));
-			json.put("coldstart", extras.getBoolean("coldstart"));
-			JSONObject jsondata = NotificationStack.clean();
-			json.put("data", jsondata);
-			//Log.v(TAG, "extrasToJSON: " + json.toString());
-
-			return json;
-		}
-		catch( JSONException e)
-		{
-			Log.e(TAG, "extrasToJSON: JSON exception");
-		}
-		return null;
-    }
-    private static JSONObject convertBundleToJson2(Bundle extras)
     {
 		try
 		{

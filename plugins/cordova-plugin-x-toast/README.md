@@ -2,6 +2,9 @@
 
 for Android, iOS and WP8, by [Eddy Verbruggen](http://www.x-services.nl/phonegap-toast-plugin/796)
 
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=eddyverbruggen%40gmail%2ecom&lc=US&item_name=cordova%2dplugin%2dtoast&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted)
+If you like this plugin and want to say thanks please send a PR or donation. Both are equally appreciated!
+
 
 <table width="100%">
     <tr>
@@ -138,7 +141,7 @@ Toast.js is brought in automatically. There is no need to change or add anything
 ### Showing a Toast
 You have two choices to make when showing a Toast: where to show it and for how long.
 * show(message, duration, position)
-* duration: 'short', 'long'
+* duration: 'short', 'long', '3000', 900 (the latter are milliseconds)
 * position: 'top', 'center', 'bottom'
 
 You can also use any of these convenience methods:
@@ -164,7 +167,7 @@ function showBottom() {
   window.plugins.toast.showWithOptions(
     {
       message: "hey there",
-      duration: "short",
+      duration: "short", // which is 2000 ms. "long" is 4000. Or specify the nr of ms yourself.
       position: "bottom",
       addPixelsY: -40  // added a negative value to move it up a bit (default 0)
     },
@@ -193,10 +196,10 @@ called again. You can distinguish between those events of course:
   window.plugins.toast.showWithOptions(
     {
       message: "hey there",
-      duration: "short",
+      duration: 1500, // ms
       position: "bottom",
       addPixelsY: -40,  // (optional) added a negative value to move it up a bit (default 0)
-      data: {'foo','bar'} // (optional) pass in a JSON object here (it will be sent back in the success callback below)
+      data: {'foo':'bar'} // (optional) pass in a JSON object here (it will be sent back in the success callback below)
     },
     // implement the success callback
     function(result) {
@@ -221,7 +224,7 @@ Note that on WP this object is currently ignored.
 ```js
   window.plugins.toast.showWithOptions({
     message: "hey there",
-    duration: "short",
+    duration: "short", // 2000 ms
     position: "bottom",
     styling: {
       opacity: 0.75, // 0.0 (transparent) to 1.0 (opaque). Default 0.8
@@ -251,6 +254,7 @@ The Android code was entirely created by me.
 For iOS most credits go to this excellent [Toast for iOS project by Charles Scalesse] (https://github.com/scalessec/Toast).
 
 ## 6. CHANGELOG
+- 2.5.0: By popular demand: Specify the duration of the Toast on iOS and Android. Pass in `short` (2000ms), `long` (4000ms), or any nr of milliseconds: `900`.
 - 2.4.2: You can now also set the Toast `opacity` for iOS.
 - 2.4.1: As an addition to 2.4.0, [Sino](https://github.com/SinoBoeckmann) added the option to change the text color!
 - 2.4.0: You can now style the Toast with a number of properties. See

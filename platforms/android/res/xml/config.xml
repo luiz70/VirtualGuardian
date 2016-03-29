@@ -1,29 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.app.virtualguardian" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="PushPlugin">
-        <param name="android-package" value="com.plugin.gcm.PushPlugin" />
-    </feature>
-    <feature name="Camera">
-        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
-    </feature>
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
-    <feature name="Geolocation">
-        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
-    </feature>
-    <feature name="Globalization">
-        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
-    </feature>
-    <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
-    </feature>
-    <feature name="NetworkStatus">
-        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
-    </feature>
-    <feature name="YoikScreenOrientation">
-        <param name="android-package" value="net.yoik.cordova.plugins.screenorientation.YoikScreenOrientation" />
     </feature>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
@@ -37,22 +16,46 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Toast">
-        <param name="android-package" value="nl.xservices.plugins.Toast" />
-    </feature>
-    <feature name="SQLitePlugin">
-        <param name="android-package" value="io.sqlc.SQLitePlugin" />
-    </feature>
-    <feature name="Keyboard">
-        <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
+    <feature name="Uber">
+        <param name="android-package" value="com.jabb.plugin.uber.Uber" />
         <param name="onload" value="true" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
     <feature name="AppVersion">
         <param name="android-package" value="uk.co.whiteoctober.cordova.AppVersion" />
     </feature>
-    <feature name="Uber">
-        <param name="android-package" value="com.jabb.plugin.uber.Uber" />
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <name>virtualguardian</name>
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <feature name="Keyboard">
+        <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
+    </feature>
+    <feature name="PushPlugin">
+        <param name="android-package" value="com.plugin.gcm.PushPlugin" />
+    </feature>
+    <feature name="YoikScreenOrientation">
+        <param name="android-package" value="net.yoik.cordova.plugins.screenorientation.YoikScreenOrientation" />
+    </feature>
+    <feature name="SQLitePlugin">
+        <param name="android-package" value="io.sqlc.SQLitePlugin" />
+    </feature>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
     </feature>
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
@@ -72,7 +75,7 @@
     <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
-    <name>Virtual Guardian</name>
+    <name>VirtualGuardian</name>
     <description>
         An Ionic Framework and Cordova project.
     </description>

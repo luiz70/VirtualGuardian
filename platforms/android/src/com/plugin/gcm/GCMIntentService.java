@@ -1,8 +1,5 @@
 package com.plugin.gcm;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +9,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -23,8 +19,7 @@ import com.google.android.gcm.GCMBaseIntentService;
 public class GCMIntentService extends GCMBaseIntentService {
 
 	private static final String TAG = "GCMIntentService";
-	public static Context CONTEXT;
-	private static final NotificationStack notificaciones=new NotificationStack();
+	
 	public GCMIntentService() {
 		super("GCMIntentService");
 	}
@@ -62,55 +57,93 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 	@Override
 	protected void onMessage(Context context, Intent intent) {
-		SharedPreferences prefs = context.getSharedPreferences("com.app.virtualguardian", Context.MODE_PRIVATE);
-		if(prefs.getString("Registered","").equals("1")){
-			
-			// Extract the payload from the message
-			Bundle data = intent.getExtras();
-			Bundle extras=new Bundle();
-			
-			
-			/*for (String key : data.keySet()) {
-			    Object value = data.get(key);
-			    Log.d("Debug", String.format("%s %s (%s)", key,  
-			        value.toString(), value.getClass().getName()));
+		Log.d(TAG, "onMessage - context: " + context);
+
+		// Extract the payload from the message
+		Bundle extras = intent.getExtras();
+		if (extras != null)
+		{
+			// if we are in the foreground, just surface the payload, else post it to the statusbar
+            if (PushPlugin.isInForeground()) {
+				extras.putBoolean("foreground", true);
+                PushPlugin.sendExtras(extras);
 			}
-			Log.d("Debug",data.getString("Direccion"));*/
-			
-			if (data != null)
-			{
-				// if we are in the foreground, just surface the payload, else post it to the statusbar
-	            if (PushPlugin.isInForeground()) {
-					extras.putBoolean("foreground", true);
-				}
-				else {
-					extras.putBoolean("foreground", false);
-				}
-				if(data.getString("Subtitulo") == null && Integer.parseInt(data.getString("IdNotificacion"))>0){
-					int notif=notificaciones.add(data,context,this);
-					if(!extras.getBoolean("foreground"))notificaciones.display(notif,extras);
-					else if(notif>0)PushPlugin.sendExtras(extras);
-				}else{
-					String s;
-					try {
-						s = URLDecoder.decode(data.getString("Subtitulo"), "UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						// TODO Auto-generated catch block
-						s=data.getString("Subtitulo");
-					}
-					data.putString("Direccion",s);
-					data.putString("Contacto",""+data.getString("Correo"));
-					int notif=notificaciones.add(data,context,this);
-					if(!extras.getBoolean("foreground"))notificaciones.display(notif,extras);
-					else if(notif>0)PushPlugin.sendExtras(extras);
-				}
-				
-	            
-	        }
-		}
+			else {
+				extras.putBoolean("foreground", false);
+
+                // Send a notification if there is a message
+                if (extras.getString("message") != null && extras.getString("message").length() != 0) {
+                    createNotification(context, extras);
+                }
+            }
+        }
 	}
 
+	public void createNotification(Context context, Bundle extras)
+	{
+		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		String appName = getAppName(this);
+
+		Intent notificationIntent = new Intent(this, PushHandlerActivity.class);
+		notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		notificationIntent.putExtra("pushBundle", extras);
+
+		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		
+		int defaults = Notification.DEFAULT_ALL;
+
+		if (extras.getString("defaults") != null) {
+			try {
+				defaults = Integer.parseInt(extras.getString("defaults"));
+			} catch (NumberFormatException e) {}
+		}
+		
+		NotificationCompat.Builder mBuilder =
+			new NotificationCompat.Builder(context)
+				.setDefaults(defaults)
+				.setSmallIcon(context.getApplicationInfo().icon)
+				.setWhen(System.currentTimeMillis())
+				.setContentTitle(extras.getString("title"))
+				.setTicker(extras.getString("title"))
+				.setContentIntent(contentIntent)
+				.setAutoCancel(true);
+
+		String message = extras.getString("message");
+		if (message != null) {
+			mBuilder.setContentText(message);
+		} else {
+			mBuilder.setContentText("<missing message content>");
+		}
+
+		String msgcnt = extras.getString("msgcnt");
+		if (msgcnt != null) {
+			mBuilder.setNumber(Integer.parseInt(msgcnt));
+		}
+		
+		int notId = 0;
+		
+		try {
+			notId = Integer.parseInt(extras.getString("notId"));
+		}
+		catch(NumberFormatException e) {
+			Log.e(TAG, "Number format exception - Error parsing Notification ID: " + e.getMessage());
+		}
+		catch(Exception e) {
+			Log.e(TAG, "Number format exception - Error parsing Notification ID" + e.getMessage());
+		}
+		
+		mNotificationManager.notify((String) appName, notId, mBuilder.build());
+	}
 	
+	private static String getAppName(Context context)
+	{
+		CharSequence appName = 
+				context
+					.getPackageManager()
+					.getApplicationLabel(context.getApplicationInfo());
+		
+		return (String)appName;
+	}
 	
 	@Override
 	public void onError(Context context, String errorId) {

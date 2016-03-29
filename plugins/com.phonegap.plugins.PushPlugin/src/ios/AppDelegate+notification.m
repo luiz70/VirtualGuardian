@@ -9,16 +9,24 @@
 #import "AppDelegate+notification.h"
 #import "PushPlugin.h"
 #import <objc/runtime.h>
+#import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+
 
 static char launchNotificationKey;
 
+CLLocationManager *locationManager;
+NSMutableArray *locations;
+
 @implementation AppDelegate (notification)
+
 
 - (id) getCommandInstance:(NSString*)className
 {
 	return [self.viewController getCommandInstance:className];
 }
-
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 // its dangerous to override a method from within a category.
 // Instead we will use method swizzling. we set this up in the load call.
 + (void)load
@@ -28,6 +36,7 @@ static char launchNotificationKey;
     original = class_getInstanceMethod(self, @selector(init));
     swizzled = class_getInstanceMethod(self, @selector(swizzled_init));
     method_exchangeImplementations(original, swizzled);
+    
 }
 
 - (AppDelegate *)swizzled_init
@@ -42,6 +51,7 @@ static char launchNotificationKey;
 
 // This code will be called immediately after application:didFinishLaunchingWithOptions:. We need
 // to process notifications in cold-start situations
+
 - (void)createNotificationChecker:(NSNotification *)notification
 {
 	if (notification)
@@ -52,9 +62,26 @@ static char launchNotificationKey;
 	}
 }
 
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-    [pushHandler didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    //[pushHandler didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler
+{
+    PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
+    if ([identifier isEqualToString:@"aceptar"])
+    {
+        [pushHandler aceptcall];
+        //[[FightManager sharedManager] fightLikeAnIdiot];
+    }
+    else if ([identifier isEqualToString:@"rechazar"])
+    {
+        [pushHandler cancelcall];
+        //[[FightManager sharedManager] surrenderLikeABaby];
+    }
+    
+    completionHandler();
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -62,40 +89,41 @@ static char launchNotificationKey;
     [pushHandler didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"didReceiveNotification");
-    
-    // Get application state for iOS4.x+ devices, otherwise assume active
-    UIApplicationState appState = UIApplicationStateActive;
-    if ([application respondsToSelector:@selector(applicationState)]) {
-        appState = application.applicationState;
-    }
-    
-    if (appState == UIApplicationStateActive) {
-        PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-        pushHandler.notificationMessage = userInfo;
-        pushHandler.isInline = YES;
-        [pushHandler notificationReceived];
-    } else {
-        //save it for later
-        self.launchNotification = userInfo;
-    }
+-(void)notificawv{
+    PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
+    [pushHandler notificationReceived];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
     NSLog(@"active");
+    /*SocketIOClient * socket = [[SocketIOClient alloc] initWithSocketURL:@"localhost:8080" opts:nil];
+    
+    [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        NSLog(@"socket connected");
+    }];
+    
+    [socket on:@"currentAmount" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        double cur = [[data objectAtIndex:0] floatValue];
+        
+        [socket emitWithAck:@"canUpdate" withItems:@[@(cur)]](0, ^(NSArray* data) {
+            [socket emit:@"update" withItems:@[@{@"amount": @(cur + 2.50)}]];
+        });
+        
+        [ack with:@[@"Got your currentAmount, ", @"dude"]];
+    }];
+    
+    [socket connect];*/
     
     //zero badge
-    application.applicationIconBadgeNumber = 0;
-
-    if (self.launchNotification) {
+    
+    if(application.applicationIconBadgeNumber!=0){
+        application.applicationIconBadgeNumber= 0;
         PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-		
-        pushHandler.notificationMessage = self.launchNotification;
-        self.launchNotification = nil;
-        [pushHandler performSelectorOnMainThread:@selector(notificationReceived) withObject:pushHandler waitUntilDone:NO];
+        [pushHandler notificationReceived];
     }
+
 }
 
 // The accessors use an Associative Reference since you can't define a iVar in a category
@@ -113,6 +141,14 @@ static char launchNotificationKey;
 - (void)dealloc
 {
     self.launchNotification	= nil; // clear the association and release the object
+}
+#pragma mark
+#pragma mark locationManager delegate methods
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSString *currentLatitude = [[NSString alloc] initWithFormat:@"%g", newLocation.coordinate.latitude];
+    NSLog(@"AppDelegate says: latitude: %@", currentLatitude);
 }
 
 @end

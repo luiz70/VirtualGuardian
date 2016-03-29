@@ -11,11 +11,14 @@ angular.module('starter')
 	}*/
 	return function (input,scope) {
 	   if(input){
+		  
 		   var hm=input.Hora.split(":");
-		   var f1=(parseInt(input.Fecha)*1000)+(parseInt(hm[0])*60*60000)+(parseInt(hm[1])*60000)
+		   if(input.Editado==null)var f1=(parseInt(input.Fecha)*1000)
+		 	else  var f1=(parseInt(input.Fecha)*1000)+(parseInt(hm[0])*60*60000)+(parseInt(hm[1])*60000)
 		   var f2=new Date();
 		   f2=f2.getTime();
 		   var val=Math.floor((f2-f1)/60000)
+		    if(input.Editado==null)console.log(new Date(f1),new Date(f2));
 		   if(val==0){
 			   return scope.idioma.Reportes[15]; 
 		   }else if(val<60){

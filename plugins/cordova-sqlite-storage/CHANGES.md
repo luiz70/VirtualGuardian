@@ -1,5 +1,11 @@
 # Changes
 
+## 0.8.5
+
+- More explicit iosDatabaseLocation option
+- iOS database location is now mandatory
+- Split-up of some more spec test scripts
+
 ## 0.8.2
 
 - Workaround fix for empty readTransaction issue (litehelpers/Cordova-sqlite-storage#409)
