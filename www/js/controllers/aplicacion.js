@@ -97,7 +97,13 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 		},300)
 	}
 	window.addEventListener('native.keyboardshow', function(e){
-		alert('Keyboard height is: ' + e.keyboardHeight);
+		var elems=document.getElementsByClassName("popup-container");
+		if(elems.length>0)angular.element(elems[0]).css("height",window.innerHeight+"px")
+    
+  	});
+	window.addEventListener('native.keyboardhide', function(e){
+		var elems=document.getElementsByClassName("popup-container");
+		if(elems.length>0)angular.element(elems[0]).css("height","100%")
     
   	});
 	//obtiene el ultimo elemento del nombre del estado
