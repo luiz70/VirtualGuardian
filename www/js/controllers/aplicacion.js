@@ -96,6 +96,10 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 			document.location.href="index.html"
 		},300)
 	}
+	window.addEventListener('native.keyboardshow', function(e){
+		alert('Keyboard height is: ' + e.keyboardHeight);
+    
+  	});
 	//obtiene el ultimo elemento del nombre del estado
 	$scope.getState=function(name){
 		//separa el nombre del estado en bloques
