@@ -1,0 +1,14 @@
+<ion-modal-view class="ajustes acerca" ng-controller="Acerca">
+    <ion-header-bar style="">
+     <button class="button button-clear" style="float:left;"  ng-click="cierraModal()"><i class="icon ion-ios-arrow-left"></i></button>
+  <h1 class="title show">{{idioma.Ajustes[2]}}</h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="false">
+    	<img src="img/logo.png" class="acerca-logo"></img>	
+        <div class="acerca-titulo">{{idioma.Ajustes[3]}}</div>
+        <button>{{idioma.Ajustes[5]+": "+version}}</button>
+        <button>{{idioma.Ajustes[6]}}</button>
+        <button>{{idioma.Ajustes[7]}}</button>
+        <div class="acerca-small">{{idioma.Ajustes[4]}}</div>
+    </ion-content>
+  </ion-modal-view>

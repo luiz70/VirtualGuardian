@@ -1,0 +1,207 @@
+@charset "utf-8";
+/* NORMAL*/
+
+ion-modal-view.notificaciones ion-content,ion-modal-view.ajustes ion-content{   
+	background: #252424;
+	padding:2vh;
+}
+ion-modal-view.iconos ion-content{   
+	padding:0px;
+}
+ion-modal-view.notificaciones ion-content{   
+	margin-top:0px;
+	padding-top:0px;
+	padding-left: 4vh;
+    padding-right: 4vh;
+}
+ion-modal-view.acerca ion-content{   
+	    text-align: center;
+}
+ion-modal-view ion-content ion-list ion-item.iconos-item{
+	padding-bottom: 2vh !important;
+    padding-right: 2vh !important;
+    padding-left: 10vh !important;
+}
+ion-modal-view ion-content ion-list ion-item.iconos-item .icono-avatar{
+    width: 6vh !important;
+    height: 6vh !important;
+    right: calc( 100vw - 10vh) !important;
+}
+ion-modal-view.acerca ion-content img.acerca-logo{
+       width: 88vw;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+ion-modal-view.acerca ion-content div.acerca-titulo{
+	    color: #E8E8E8;
+    font-size: 2.5vh;
+    font-weight: 300;
+    margin-top: 0px;
+    line-height: 3vh;
+}
+ion-modal-view.acerca ion-content button{
+   margin-left: 2vh;
+    margin-right: 2vh;
+    width: 86vw;
+    margin-top: 2vh;
+    font-size: 3vh;
+    font-weight: bold;
+    padding: 0.5vh;
+    background: #E6E6E6;
+}
+ion-modal-view.acerca ion-content div.acerca-small{
+	    color: #E8E8E8;
+    font-size: 2vh;
+    font-weight: 200;
+    text-align: justify;
+    margin-left: 2vh;
+    margin-right: 2vh;
+    line-height: 2.5vh;
+    margin-top: 5vh;
+}
+ion-modal-view.notificaciones ion-content div.ajustes-title{
+	    color: #059DB5;
+    font-size: 2.5vh;
+    font-weight: bold;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin-top: 1vh;
+}
+ion-modal-view.notificaciones ion-content div.cuenta-option{
+	    padding: 1vh;
+    padding-left: 0px;
+    font-size: 2.5vh;
+    color: #fff;
+    border-bottom: solid 1px #333;
+	    position: relative;
+}
+ion-modal-view.notificaciones ion-content div.cuenta-option.check{
+    padding-top: 2.5vh;
+    padding-bottom: 2.5vh;
+	   
+}
+ion-modal-view.notificaciones ion-content div.cuenta-option.check.main{
+ z-index: 4;
+}
+ion-modal-view.notificaciones ion-content div.cuenta-option.check  div.cuenta-title{
+	margin-bottom:0px !important;
+}
+ion-modal-view.notificaciones ion-content div.cuenta-title{
+	    font-weight: 300;
+    font-size: 2.8vh;
+    margin-bottom: 0.5vh;
+	color: #E2E2E2;
+}
+ion-modal-view.notificaciones ion-content div.cuenta-value{
+	    font-weight: 100;
+    color: #C2C2C2;
+    font-size: 2.5vh;
+}
+ion-modal-view.notificaciones ion-content .item-checkbox{
+        position: absolute;
+    top: 0px;
+    bottom: 0px;
+    border: none;
+    right: 0px;
+    padding: 0px;
+    width: auto;
+    height: 4vh;
+    margin: auto;
+}
+ion-modal-view.notificaciones ion-content .item-checkbox > .checkbox{
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    margin-top: 0px;
+    float: left;
+	padding: 0px;
+}
+ion-modal-view.notificaciones ion-content .item-checkbox > .checkbox i.checkbox-icon{
+	    width: 4vh;
+    height: 4vh;
+}
+ion-modal-view.notificaciones ion-content .item-checkbox > .checkbox i.checkbox-icon:after{
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    top: 0px;
+        bottom: 0.3vh;
+		    border: 2px solid #fff;
+			    border-top: 0px;
+    border-right: 0px;
+}
+ion-modal-view.notificaciones ion-content .item-checkbox > .checkbox i.checkbox-icon:before{
+    background: #424242;
+    border: solid 2px #5B5B5B;
+}
+.modal-view-notificaciones-switch{
+	height: 4vh;
+    position: absolute;
+    top: 0px !important;
+    bottom: 0px !important;
+    margin: auto !important;
+	z-index: 2;
+    right: 0px;
+    left: auto;
+}
+.modal-view-notificaciones-switch .toggle-mapa-pie input:checked + .track .handle {
+    -webkit-transform: translate3d(4vh, 0, 0);
+    transform: translate3d(3vh, 0, 0);
+    background-color: #E1E1E1;
+}
+.modal-view-notificaciones-switch .toggle-mapa-pie>.track {
+    height: 100%;
+    width: 7vh;
+    background: #606060;
+	border-radius: 5vh;
+}
+.modal-view-notificaciones-switch .toggle-mapa-pie input + .track .handle {
+    width: 4vh;
+}
+.cover-ajustes-notificaciones{
+	position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    background: rgba(37, 36, 36, 0.81);
+    z-index: 3;
+}
+.cargandoAjustesNot{
+	    position: absolute;
+    top: 10vh;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 28px;
+    height: 28px;
+    margin: auto;
+}
+
+/* LANDSCAPE*/
+@media (orientation: landscape) {
+
+}
+/* TABLET PRTRAIT*/
+@media only screen and (min-width : 768px) and (orientation : portrait) {
+	
+}
+/* TABLET LANDSCAPE*/
+@media only screen and (min-width : 1000px) and (orientation : landscape){
+	
+}
+/****IPHONE PEQUEÑOS***/
+@media (max-width: 320px){
+	ion-modal-view.notificaciones ion-content div.cuenta-title {
+		font-weight: 300;
+		font-size: 3vh !important;
+	}
+	ion-modal-view.notificaciones ion-content div.ajustes-title {
+		font-size: 3vh !important;
+	}
+	ion-modal-view.notificaciones ion-content div.cuenta-value {
+    	font-weight: 300;
+	}
+}

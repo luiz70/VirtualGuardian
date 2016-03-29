@@ -1,0 +1,58 @@
+<ion-modal-view class="reportes" ng-controller="CreaReporte">
+    <ion-header-bar style="">
+     <button class="button button-clear" style="float:left;"  ng-click="cierraModal()">{{idioma.General[6]}}</button>
+  <h1 class="title show">{{idioma.Reportes[1]}}</h1>
+  	<button class="button button-clear" style="float:left;"  ng-click="reporta()">{{idioma.Reportes[2]}}</button>
+    </ion-header-bar>
+    <ion-content has-bouncing="false" >
+    <!--div class="barra-opciones">
+    	<button class="button button-clear button-icon ion-images" ng-click="abreCamara()"></button>
+        <button class="button button-clear button-icon ion-mic-a"></button>
+    </div-->
+      	<!--div data-tap-disabled="true" >
+		    <ui-gmap-google-map control="minimapa" center='minimapa.center' zoom='minimapa.zoom' style="height: 30vh; width:100vw" options='minimapa.options' pan='true' events="minimapa.events" ng-cloak>
+            </ui-gmap-google-map>
+    	</div-->
+        
+    	<div class="select" ng-click="cambiaAsunto()">{{idioma.Reportes[12]}}<span>{{idioma.Asuntos[reporte.Asunto]}}</span></div>
+        <div class="select" ng-click="cambiaFecha()">{{idioma.Reportes[14]}}<span>{{reporte.Fecha.titulo}}</span></div>
+        <div class="select">
+       	<input type="text" id="reporte-direccion" placeholder="{{idioma.Reportes[13]}}" ng-model="direccion.search" ng-change="buscaDireccion()">
+        <i class="icon ion-android-close" ng-click="eliminaDireccion()" ng-hide="direccion.search.length==0"></i>
+        </div>
+        <div class="contenedor-mapa-reporte">
+        <ion-content class="lista-reportes-lugares">
+        <ion-list >
+        	<ion-item class="item-avatar item-icon-right mapa-search-resultados-item" ng-repeat="resultado in resultados" ng-click="abrelugar(resultado)">
+                <img style="-webkit-mask-image: url('{{resultado.icon}}');" >
+                <h2>{{resultado.name}}</h2>
+                <p>{{resultado.formatted_address}}</p>
+            </ion-item>
+        </ion-list>
+        </ion-content>
+        <div class="mapa-reporte" >
+        <ion-spinner icon="ripple"></ion-spinner>
+       	<button   class="reporte-boton-refresh"   ng-click="refreshPosition()" ng-show="maploaded">
+        <img>
+        </button>
+        <div class="reporte-load-foto" ng-show="maploaded" ng-click="abreCamara()">
+       		<button class="button button-clear button-icon ion-images" ></button>
+       		<div><i class="icon ion-plus-circled"></i></div>
+            <img src="img/iconos/blank.png" style="background-image:{{'url(data:image/png;base64,'+reporte.Imagen+')'}}" ng-hide="!reporte.Imagen">
+       </div>
+        <ui-gmap-google-map class="minimap" control="minimap" center='minimap.center' zoom='minimap.zoom'  options='minimap.options' pan='true' events="minimap.events" ng-cloak>
+        
+        	<ui-gmap-marker idKey='0' control='minimap.marker' coords='minimap.marker' options="minimap.marker.options" icon="'icon'" events="minimap.marker.events" index="1000" >
+			</ui-gmap-marker>
+        </ui-gmap-google-map>
+        </div>
+        </div>
+      
+        
+        
+    </ion-content>
+    
+    <!--ion-footer-bar style="    background: #252424">
+      <button ng-click="cierraModal()" style="margin-right: 0.5vh;background: #ACACAC;">{{idioma.General[2]}}</button> 
+    </ion-footer-bar-->
+  </ion-modal-view>

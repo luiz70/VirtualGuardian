@@ -1,0 +1,55 @@
+<ion-modal-view class="notificaciones" ng-controller="AjustesNotificaciones">
+    <ion-header-bar style="">
+     <button class="button button-clear" style="float:left;"  ng-click="cierraModal()">{{idioma.General[6]}}</button>
+  <h1 class="title show">{{idioma.Ajustes[1]}}</h1>
+  	<button class="button button-clear" style="float:left;"  ng-click="guarda()">{{idioma.General[12]}}</button>
+    </ion-header-bar>
+    <ion-content >
+    <div ng-show="!cargandoAjustesN">
+    	<div class="cuenta-option check main">
+        	<div class="cuenta-title">{{idioma.Ajustes[1]}}</div>
+        	<div class="modal-view-notificaciones-switch">
+                <label class="toggle toggle-mapa-pie">
+                    <input type="checkbox" ng-model="ANotificaciones.activas" >
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+ 			</div>
+        </div>
+        <div class="cover-ajustes-notificaciones ng-hide" ng-show="!ANotificaciones.activas"></div>
+    	<div class="ajustes-title">{{idioma.Ajustes[15]}}</div>
+    	<div class="cuenta-option" ng-click="cambiaTiempo()">
+        	<div class="cuenta-title">{{idioma.Ajustes[8]}}</div>
+        	<div class="cuenta-value">{{ANotificaciones.tiempo | ajustesTime}}</div>
+        </div>
+        <div class="cuenta-option check" ng-click="cambiaContactos()">
+        	<div class="cuenta-title">{{idioma.Ajustes[9]}}</div>
+        	<ion-checkbox ng-model="ANotificaciones.contactos" ng-click="cambiaContactos()" ></ion-checkbox>
+        </div>
+        <div class="cuenta-option" ng-click="cambiaEstados();">
+        	<div class="cuenta-title">{{idioma.Ajustes[10]}}</div>
+        	<div class="cuenta-value" >{{EstadosSelect.optionsLength()}}</div>
+        </div>
+        <div class="cuenta-option" ng-click="cambiaAsuntos();">
+        	<div class="cuenta-title">{{idioma.Ajustes[11]}}</div>
+        	<div class="cuenta-value">{{AsuntosSelect.optionsLength()}}</div>
+        </div>
+    	<div class="ajustes-title ng-hide" >{{idioma.Ajustes[12]}}</div>
+        <div class="cuenta-option ng-hide">
+        	<div class="cuenta-title">{{idioma.Ajustes[13]}}</div>
+        	<div class="cuenta-value">{{idioma.General[14]}}</div>
+        </div>
+       	<div class="cuenta-option ng-hide">
+        	<div class="cuenta-title">{{idioma.Ajustes[14]}}</div>
+        	<div class="cuenta-value">{{idioma.General[14]}}</div>
+        </div>
+       	<!--div class="ajustes-title">Eventos de interés</div>
+       	<div class="ajustes-title">Estados de interés</div-->
+        
+    </div>
+    <div class="cargandoAjustesNot" ng-show="cargandoAjustesN">
+    	<ion-spinner icon="ripple" class="spinner-blue"></ion-spinner>
+    </div>
+    </ion-content>
+  </ion-modal-view>
