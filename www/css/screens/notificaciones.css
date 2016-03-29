@@ -108,3 +108,17 @@
 @media only screen and (min-width : 1000px) and (orientation : landscape){
 	
 }
+/****IPHONE PEQUEÑOS***/
+@media (max-width: 320px){
+	.notificacion-item-contenido > h2 {
+    	font-size: 3vh !important;
+	}
+	.notificacion-item-contenido > p {
+		font-size: 2.8vh !important;
+		font-weight: 400 !important;
+	}
+	.notificacion-item-contenido > p.notificacion-item-fecha{
+		font-size: 2.5vh !important;
+		font-weight: 200 !important;
+	}
+}

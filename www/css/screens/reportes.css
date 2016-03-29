@@ -592,3 +592,9 @@ ion-modal-view.reportes ion-content ion-content.lista-reportes-lugares .mapa-sea
 @media only screen and (min-width : 1000px) and (orientation : landscape){
 	
 }
+/****IPHONE PEQUEÑOS***/
+@media (max-width: 320px){
+	ion-view .reporte-titulo {
+		font-size: 2.8vh;
+	}
+}

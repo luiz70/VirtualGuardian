@@ -342,3 +342,10 @@ return function (input,scope) {
 	   }
 	}
 })
+.filter('FstMayus', function () {
+	return function (input) {
+	   if(input){
+		  return input.substr(0,1).toUpperCase()+input.substr(1).toLowerCase()
+	   }
+	}
+})

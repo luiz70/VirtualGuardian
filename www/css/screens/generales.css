@@ -307,12 +307,14 @@ ion-nav-view{
 }
 .action-sheet-option, .action-sheet-destructive{
 	box-shadow:none !important;
-	    border-bottom: solid 1px #C9C9C9 !important;
-		font-size: 2.5vh !important;
-		    color: #005E6D !important;
-			    font-weight: 400;
-						    height: auto;
-							padding:1vh;
+	border-bottom: solid 1px #C9C9C9 !important;
+	font-size: 2.5vh !important;
+	color: #005E6D !important;
+	font-weight: 400;
+	height: auto;
+	padding:1vh;
+	padding-left: 2vh !important;
+    padding-right: 2vh !important;
 
 }
 .action-sheet-destructive{
@@ -440,9 +442,7 @@ padding:1vh;
 .slide-in-left.ng-leave, .slide-in-left > .ng-leave {
   -webkit-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms; }
-/*IPHONE PEQUEÑOS*/
-@media (max-width: 320px){
-}
+
 /* LANDSCAPE*/
 @media (orientation: landscape) {
 	ion-header-bar > .title.show{
@@ -552,4 +552,15 @@ padding:1vh;
 /* TABLET LANDSCAPE*/
 @media only screen and (min-width : 1000px) and (orientation : landscape){
 	
+}
+/*IPHONE PEQUEÑOS*/
+@media (max-width: 320px){
+	.action-sheet-option, .action-sheet-cancel>button{
+		font-size: 3vh !important;
+	
+	}
+	.list-mensaje {
+		font-size: 2.8vh;
+		font-weight: 300;
+	}
 }

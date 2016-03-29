@@ -180,11 +180,7 @@ label.item-input{
 	content: 'viewport-units-buggyfill;width:8vh !important;';
 	width:8vh !important;
 }
-.boton-mapa-top-right{
-	content: 'viewport-units-buggyfill;width:7vh !important;height:7vh !important;';
-	width:7vh !important;
-	height:7vh !important;
-}
+
 .label-pie-radio{
 	content: 'viewport-units-buggyfill;padding-left:1.5vh !important;';
     padding-left:1.5vh !important;
