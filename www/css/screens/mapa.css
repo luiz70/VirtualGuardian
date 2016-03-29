@@ -491,6 +491,7 @@
     right: 0px;
     height: 7vh;
     width: 7vh;
+	padding: 0px;
 }
 .mapa-search-cancelar > i{
 	font-size:3vh;

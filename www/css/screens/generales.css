@@ -9,7 +9,9 @@ body,html{
 #app_content.invisible{
 	opacity:0 !important;
 }
-
+input{
+	-webkit-appearance: none;
+}
 .elipsis{
 	text-overflow: ellipsis !important;
     overflow: hidden !important;
@@ -79,6 +81,7 @@ ion-header-bar{
 	max-height:10vh !important;
 	min-height:10vh !important;
 	background: #181818 !important;
+	max-width: 100vw !important;
 }
 .pane{
 	background-color: #242424 !important;
@@ -451,7 +454,12 @@ padding:1vh;
 		font-size: 2.8vh;
 		font-weight: 300;
 	}
+	.popup-body {
+		font-size: 3vh;
+		line-height: 3vh;
+	}
 }
+
 /* LANDSCAPE*/
 @media (orientation: landscape) {
 	ion-header-bar > .title.show{

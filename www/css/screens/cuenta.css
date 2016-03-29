@@ -223,7 +223,7 @@ ion-modal-view.cuenta ion-content div.cuenta-cargando{
 /****IPHONE PEQUEÑOS***/
 @media (max-width: 320px){
 	ion-modal-view.cuenta ion-content ion-item div.cuenta-option {
-		font-weight: 300;
-		letter-spacing: 1px;
+		font-weight: 300 !important;
 	}
+	
 }

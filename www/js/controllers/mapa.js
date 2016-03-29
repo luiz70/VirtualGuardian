@@ -124,7 +124,7 @@ angular.module('starter.controllers')
 					$scope.resultados=[]
 					$scope.showSearch=false;
 					$scope.buscador=""
-			},300)
+			},500)
 			
 		}
 	})
