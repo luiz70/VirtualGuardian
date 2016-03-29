@@ -37,7 +37,7 @@ button{
 	backface-visibility:hidden;
 }
 .popup-container{
-	height: 100% !important;
+	height: 100%;
     overflow: auto;
 }
 .popup-container::-webkit-scrollbar { 
