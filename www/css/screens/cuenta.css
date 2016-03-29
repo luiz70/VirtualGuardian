@@ -142,8 +142,8 @@ ion-modal-view.cuenta ion-content ion-item div.cuenta-option.info-cuenta div.cue
     overflow: visible;
     height: auto;
     white-space: initial;
-    font-size: 2vh;
-    line-height: 2.5vh;
+    font-size: 2.5vh;
+    line-height: 3vh;
     padding-right: 1vh;
 }
 ion-modal-view.cuenta ion-content ion-item div.cuenta-value{
@@ -219,4 +219,11 @@ ion-modal-view.cuenta ion-content div.cuenta-cargando{
 /* TABLET LANDSCAPE*/
 @media only screen and (min-width : 1000px) and (orientation : landscape){
 	
+}
+/****IPHONE PEQUEÑOS***/
+@media (max-width: 320px){
+	ion-modal-view.cuenta ion-content ion-item div.cuenta-option {
+		font-weight: 300;
+		letter-spacing: 1px;
+	}
 }

@@ -442,7 +442,16 @@ padding:1vh;
 .slide-in-left.ng-leave, .slide-in-left > .ng-leave {
   -webkit-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms; }
-
+@media (max-width: 320px){
+	.action-sheet-option, .action-sheet-cancel>button{
+		font-size: 3vh !important;
+	
+	}
+	.list-mensaje {
+		font-size: 2.8vh;
+		font-weight: 300;
+	}
+}
 /* LANDSCAPE*/
 @media (orientation: landscape) {
 	ion-header-bar > .title.show{
@@ -554,13 +563,3 @@ padding:1vh;
 	
 }
 /*IPHONE PEQUEÑOS*/
-@media (max-width: 320px){
-	.action-sheet-option, .action-sheet-cancel>button{
-		font-size: 3vh !important;
-	
-	}
-	.list-mensaje {
-		font-size: 2.8vh;
-		font-weight: 300;
-	}
-}
