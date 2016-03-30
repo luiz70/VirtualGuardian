@@ -96,7 +96,8 @@ if (img.complete) img.onload();
 		Contactos.inicializa()
 		Notificacion.inicializa()
 		Reporte.inicializa()
-		Filtros.inicializa()
+		Filtros.inicializa();
+		console.log(3)
 	}
 	
 	$scope.conectado=$rootScope.$on("socket.connect",$scope.conectedonce)
@@ -108,7 +109,9 @@ if (img.complete) img.onload();
 		//$scope.conectado=$rootScope.$on("socket.connect",$scope.conectedonce)
 		socket.connect();
 	})
-		
+		$scope.contectades=function(){
+			
+		}
 	$scope.menuWidth=function(){
 		if(window.innerHeight> window.innerWidth)return window.innerWidth*0.85;
 		else return window.innerHeight*0.85;
