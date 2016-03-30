@@ -32,9 +32,6 @@
 //#import "CDVBackgroundGeoLocation.h"
 #import <AudioToolbox/AudioServices.h>
 #import "MainViewController.h"
-//#import "SwiftIOObjc-Swift.h"
-//#import <SocketIO.framework/Headers/SocketIO-iOS.h>
-//#import "SocketIO-iOS.h"
 //#import <Socket_IO_Client_Swift/Socket_IO_Client_Swift-Swift.h>
 
 
@@ -229,7 +226,7 @@
 
 }
 - (void)cancelcall{
-   /* [UIApplication sharedApplication].applicationIconBadgeNumber--;
+  /*  [UIApplication sharedApplication].applicationIconBadgeNumber--;
     NSString * d=notificationMessage[@"IdUsuario"];
     if(SocketConected)[ socket emit:@"colgar_movil" withItems:@[d]];
     [NSTimer scheduledTimerWithTimeInterval:5.0
@@ -295,8 +292,8 @@
             case 10:
                 SocketForeground=(appState == UIApplicationStateActive);
                 notificationMessageTemp = userInfo;
-               /* if(!socket)[self socketInit];
-                [self socketConnect];*/
+              //  if(!socket)[self socketInit];
+                [self socketConnect];
                 
                 
                 break;
@@ -308,9 +305,10 @@
                     
                     [self notificationReceived];
                 } else {
+            
                     if([userInfo[@"Tipo"] intValue]<5)
                      [self setNotification:[userInfo objectForKey:@"Correo"]:[userInfo objectForKey:@"Subtitulo"]:@"Virtual Guardian"];
-                     else [self setNotification:[userInfo objectForKey:@"Subtitulo"]:@"":[userInfo objectForKey:@"Titulo"]];
+                    else [self setNotification:[userInfo objectForKey:@"Titulo"]:[userInfo objectForKey:@"Subtitulo"]:@"Virtual Guardian"];
                     notificationMessage = userInfo;
                 }
                 break;
@@ -341,7 +339,7 @@
 
 }
 -(void) socketConnect{
-    /*[socket close];
+   /* [socket close];
     [socket connectWithTimeoutAfter: 5 withTimeoutHandler: ^{
         [self socketOnError];
     }];*/
@@ -399,7 +397,7 @@
     //avisa que no contesto
 }
 -(void)perdida {
-    /*if(callNotification){
+    if(callNotification){
     [[UIApplication sharedApplication] cancelLocalNotification:callNotification];
    
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
@@ -410,8 +408,8 @@
      if(notificationMessage != nil)[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
      notificationMessage = nil;
     callNotification=nil;
-        [socket close];
-    }*/
+       // [socket close];
+    }
     
 
 }
@@ -594,14 +592,14 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             //all you ever do with UIKit.. in your case the reloadData call
             //[self.tableView reloadData];
-            //LINEEEEEEEEEE[self.webView stringByEvaluatingJavaScriptFromString:jsCallBack];
-             [self.webViewEngine evaluateJavaScript:jsCallBack completionHandler:nil];
+           // [self.webView stringByEvaluatingJavaScriptFromString:jsCallBack];
+            [self.webViewEngine evaluateJavaScript:jsCallBack completionHandler:nil];
         });
         
         self.notificationMessage = nil;
         notificaciones=0;
         [self timerOff];
-        //if(socket)[socket close];
+       // if(socket)[socket close];
     }
 }
 

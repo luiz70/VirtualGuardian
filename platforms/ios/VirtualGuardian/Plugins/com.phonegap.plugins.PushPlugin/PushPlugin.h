@@ -43,7 +43,7 @@
     BOOL ready;
     BOOL inCall;
     NSTimer *time;
-    //SocketIOClient* socket;
+   // SocketIOClient* socket;
     BOOL SocketForeground;
     BOOL SocketConected;
     
