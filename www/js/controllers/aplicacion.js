@@ -1,5 +1,5 @@
 angular.module('starter.controllers', ['uiGmapgoogle-maps'])
-.controller('Aplicacion', function($scope,$rootScope,Memory,$state,$ionicViewSwitcher,$http,$cordovaDevice,$cordovaNetwork,$ionicHistory,Message,$timeout,Usuario,socket) {
+.controller('Aplicacion', function($scope,$rootScope,Memory,$state,$ionicViewSwitcher,$http,$cordovaDevice,$cordovaNetwork,$ionicHistory,Message,$timeout,Usuario,socket,Push) {
 	$rootScope.port=88;//3200
 	$rootScope.hideSplash=false;
 	//Memory.clean();
@@ -80,6 +80,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 		//muestra mensaje de cerrando sesion
 		Message.showLoading($rootScope.idioma.Login[9]);
 		//realiza un timeout por diseño
+		Push.registra(false);
 		$timeout(function(){
 			socket.close();
 			//limpia la memoria de la aplicacion
