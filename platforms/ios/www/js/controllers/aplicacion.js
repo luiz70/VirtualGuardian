@@ -80,7 +80,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 		//muestra mensaje de cerrando sesion
 		Message.showLoading($rootScope.idioma.Login[9]);
 		//realiza un timeout por diseño
-            Push.registra(false);
+		Push.registra(false);
 		$timeout(function(){
 			socket.close();
 			//limpia la memoria de la aplicacion
@@ -91,7 +91,6 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 			//cambia a pantalla de login
 			//$state.go('app.login')
 			//oculta el mensaje de cerrando sesion
-            
 			Message.hideLoading();
 			$rootScope.cerrada=true;
 			if(navigator.splashscreen)navigator.splashscreen.show();

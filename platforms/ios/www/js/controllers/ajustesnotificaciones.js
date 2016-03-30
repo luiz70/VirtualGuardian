@@ -67,6 +67,16 @@ angular.module('starter.controllers')
 			}
 		})
 	}
+	$scope.seleccionaTodas=function(){
+		var val=$scope.allSelected();
+		for(var i=0;i<$scope.select.options.length;i++)
+			$scope.select.options[i].selected=!val;
+	}
+	$scope.allSelected=function(){
+		for(var i=0;i<$scope.select.options.length;i++)
+		if($scope.select.options[i].selected==false)return false;
+		return true;
+	}
 	$scope.cambiaEstados=function(){
 		$scope.EstadosSelect.temp=JSON.stringify($scope.EstadosSelect.options);
 		$scope.select=$scope.EstadosSelect;

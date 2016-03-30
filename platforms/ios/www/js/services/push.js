@@ -38,14 +38,13 @@ angular.module('starter.services')
 			case 'registered': if(notificacion.regid.length > 0 )	registra(notificacion.regid);
           	break;
         	case 'message':
-                /*
 				$rootScope.push.notificaciones+=(parseInt(notificacion.data["1"]))
 				$rootScope.push.contactos+=(parseInt(notificacion.data["2"]))
 				if(notificacion.foreground){
 					//alert("frente");
 				}else{
 					//alert("back");
-				}*/
+				}
           		//console.log(notificacion);
           	break;
 		}

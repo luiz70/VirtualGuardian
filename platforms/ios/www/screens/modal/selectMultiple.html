@@ -7,6 +7,7 @@
 <ion-content >
 	
 	<ion-list >
+    	<ion-checkbox ng-model="allSelected()" ng-click="seleccionaTodas()">{{idioma.General[13]}}</ion-checkbox>
 		<ion-checkbox ng-repeat="option in select.options" ng-model="option.selected" ng-click="select.funcionSeleccion(option)">{{option.text}}</ion-checkbox>
 	</ion-list>
 </ion-content>
