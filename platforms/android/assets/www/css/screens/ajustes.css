@@ -93,7 +93,7 @@ ion-modal-view.notificaciones ion-content div.cuenta-title{
 	color: #E2E2E2;
 }
 ion-modal-view.notificaciones ion-content div.cuenta-value{
-	    font-weight: 100;
+	    font-weight: 200;
     color: #C2C2C2;
     font-size: 2.5vh;
 }
@@ -179,58 +179,6 @@ ion-modal-view.notificaciones ion-content .item-checkbox > .checkbox i.checkbox-
     height: 28px;
     margin: auto;
 }
-/*ion-modal-view.notificaciones ion-content div.ajustes-title{
-	    color: #1B1B1B;
-    font-size: 2.5vh;
-    padding-left: 1vh;
-    font-weight: 400;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    background: #B6B6B6;
-}
-ion-modal-view.notificaciones ion-content div.cuenta-option{
-	height: 5.5vh;
-    overflow: hidden;
-    font-size: 2.8vh;
-    line-height: 3.5vh;
-    font-weight: 100;
-    border-bottom:solid 0.3vh #383838;
-    padding-bottom: 1vh;
-    margin-bottom: 0px;
-    display: flex;
-    flex-direction: row;
-    flex-flow: row nowrap;
-    flex-wrap: nowrap;
-    padding-top: 1vh;
-	    padding-left: 2vh;
-	
-}
-ion-modal-view.notificaciones ion-content div.cuenta-title{
-	    position: relative;
-    float: left;
-    padding-left: 1vh;
-    color: #ECECEC;
-    
-}
-ion-modal-view.notificaciones ion-content div.cuenta-value{
-	    position: relative;
-    float: right;
-    font-size: 2.5vh;
-    text-align: right;
-    flex: 5 !important;
-    margin-left: 2vh;
-    overflow: hidden;
-    padding-right: 1vh;
-}
-ion-modal-view.notificaciones ion-content div.cuenta-value p{
-	font-size:2.5vh;
-	    color: #D0D0D0;
-		width: 100%;
-}
-ion-modal-view.notificaciones ion-content div.cuenta-value p i{
-    font-size: 3vh;
-        line-height: 4vh;
-}*/
 
 /* LANDSCAPE*/
 @media (orientation: landscape) {
@@ -243,4 +191,17 @@ ion-modal-view.notificaciones ion-content div.cuenta-value p i{
 /* TABLET LANDSCAPE*/
 @media only screen and (min-width : 1000px) and (orientation : landscape){
 	
+}
+/****IPHONE PEQUEÑOS***/
+@media (max-width: 320px){
+	ion-modal-view.notificaciones ion-content div.cuenta-title {
+		font-weight: 300;
+		font-size: 3vh !important;
+	}
+	ion-modal-view.notificaciones ion-content div.ajustes-title {
+		font-size: 3vh !important;
+	}
+	ion-modal-view.notificaciones ion-content div.cuenta-value {
+    	font-weight: 300;
+	}
 }

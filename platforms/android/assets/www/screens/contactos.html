@@ -11,7 +11,7 @@
             <div class="animate-fade-slide-in-right">
                	<ion-item class="item-avatar item-icon-right contacto-item-contenido" ng-repeat="contacto in contactos track by contacto.IdUsuario"  ng-click="abreContacto(contacto)">				
                 	<div  class="friends-avatar"></div>
-                	<h2>{{contacto.Correo}}</h2>
+                	<h2>{{contacto.Correo | FstMayus}}</h2>
                     <p>{{contacto | contactoEstatus:this}}</p>
                     <i class="icon ion-android-more-vertical friends-more" ></i>
 				</ion-item>

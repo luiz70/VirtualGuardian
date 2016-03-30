@@ -21,7 +21,8 @@ cordova.define("cordova-plugin-globalization.globalization", function(require, e
 */
 
 var argscheck = require('cordova/argscheck'),
-    exec = require('cordova/exec');
+    exec = require('cordova/exec'),
+    GlobalizationError = require('./GlobalizationError');
 
 var globalization = {
 

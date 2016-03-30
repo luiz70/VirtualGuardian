@@ -89,9 +89,10 @@ angular.module('starter.services', ['LocalStorageModule','ngError'])
 		//carga los eventos
 		//Eventos.refresh();
 		//animacion del mapa una vez cargado
-		
+		$rootScope.mapaCargado=true;
 		angular.element(document.getElementsByClassName("angular-google-map")).addClass("aparece-map")
 		$timeout(function(){
+			
 			angular.element(document.getElementsByClassName("angular-google-map")).addClass("visible")
 		},1000)
 		window.addEventListener("orientationchange", function(){

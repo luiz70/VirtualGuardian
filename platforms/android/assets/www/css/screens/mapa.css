@@ -491,6 +491,7 @@
     right: 0px;
     height: 7vh;
     width: 7vh;
+	padding: 0px;
 }
 .mapa-search-cancelar > i{
 	font-size:3vh;
@@ -1684,4 +1685,35 @@ ionic-datepicker.2{
 /* TABLET LANDSCAPE*/
 @media only screen and (min-width : 1000px) and (orientation : landscape){
 	
+}
+/****IPHONE PEQUEÑOS***/
+@media (max-width: 320px){
+	.boton-mapa-top-right-dead-label{
+	    height: 7vh;
+		padding-right: 3.5vh;
+		right: 3.5vh;
+		font-size: 3vh !important;
+		line-height: 7vh;
+		font-weight: 400;
+	}
+	.boton-mapa-top-right-dead-label:before{
+		width: 7vh;
+		height: 7vh;
+		left: -3.5vh;
+		
+	}
+	.boton-mapa-top-right-dead-label:after{
+		width: 7vh;
+		height: 7vh;
+		right: -3.5vh;
+	}
+	.boton-mapa-top-right{
+		content: 'viewport-units-buggyfill;width:7vh !important;height:7vh !important;';
+		width: 7vh !important;
+		height: 7vh !important;
+		margin-top: 1vh !important;
+	}
+	.hide-options{
+		transform: translate3d(100vw,0,0) !important;
+	}
 }

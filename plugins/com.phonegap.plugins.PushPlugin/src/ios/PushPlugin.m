@@ -29,13 +29,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate+notification.h"
-#import "CDVBackgroundGeoLocation.h"
+//#import "CDVBackgroundGeoLocation.h"
 #import <AudioToolbox/AudioServices.h>
 #import "MainViewController.h"
-//#import "SwiftIOObjc-Swift.h"
-//#import <SocketIO.framework/Headers/SocketIO-iOS.h>
-//#import "SocketIO-iOS.h"
-#import <Socket_IO_Client_Swift/Socket_IO_Client_Swift-Swift.h>
+//#import <Socket_IO_Client_Swift/Socket_IO_Client_Swift-Swift.h>
 
 
 
@@ -51,7 +48,7 @@
 @synthesize callback;
 @synthesize locationManager;
 @synthesize callNotification;
-@synthesize socket;
+//@synthesize socket;
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -229,26 +226,26 @@
 
 }
 - (void)cancelcall{
-    [UIApplication sharedApplication].applicationIconBadgeNumber--;
+  /*  [UIApplication sharedApplication].applicationIconBadgeNumber--;
     NSString * d=notificationMessage[@"IdUsuario"];
     if(SocketConected)[ socket emit:@"colgar_movil" withItems:@[d]];
     [NSTimer scheduledTimerWithTimeInterval:5.0
                                      target:self
                                    selector:@selector(kilsockCancela)
                                    userInfo:notificationMessage
-                                    repeats:NO];
+                                    repeats:NO];*/
     
 }
 -(void)kilsockCancela{
-    NSLog(@"cancela");
+  /*  NSLog(@"cancela");
     notificationMessage = nil;
     [self timerOff];
-    if(socket)[socket close];
+    if(socket)[socket close];*/
 }
 -(void)aceptcall{
-    NSLog(@"acepta");
+   /* NSLog(@"acepta");
     [self notificationReceived];
-    [self timerOff];
+    [self timerOff];*/
 }
 // Handle incoming pushes
 - (void)pushRegistry:(PKPushRegistry *)registry didReceiveIncomingPushWithPayload:(PKPushPayload *)payload forType:(NSString *)type {
@@ -295,7 +292,7 @@
             case 10:
                 SocketForeground=(appState == UIApplicationStateActive);
                 notificationMessageTemp = userInfo;
-                if(!socket)[self socketInit];
+              //  if(!socket)[self socketInit];
                 [self socketConnect];
                 
                 
@@ -308,9 +305,10 @@
                     
                     [self notificationReceived];
                 } else {
+            
                     if([userInfo[@"Tipo"] intValue]<5)
                      [self setNotification:[userInfo objectForKey:@"Correo"]:[userInfo objectForKey:@"Subtitulo"]:@"Virtual Guardian"];
-                     else [self setNotification:[userInfo objectForKey:@"Subtitulo"]:@"":[userInfo objectForKey:@"Titulo"]];
+                    else [self setNotification:[userInfo objectForKey:@"Titulo"]:[userInfo objectForKey:@"Subtitulo"]:@"Virtual Guardian"];
                     notificationMessage = userInfo;
                 }
                 break;
@@ -341,16 +339,16 @@
 
 }
 -(void) socketConnect{
-    [socket close];
+   /* [socket close];
     [socket connectWithTimeoutAfter: 5 withTimeoutHandler: ^{
         [self socketOnError];
-    }];
+    }];*/
 }
 
 -(void) socketOnConnect{
-    SocketConected=true;
+  /*  SocketConected=true;
     NSLog(@"connected");
-    [ socket emit:@"listening" withItems:@[notificationMessageTemp[@"IdUsuario"]]];
+    [ socket emit:@"listening" withItems:@[notificationMessageTemp[@"IdUsuario"]]];*/
 }
 -(void)isConnected:(NSArray *)data{
     NSLog(@"isconected");
@@ -373,7 +371,7 @@
     [self timerOff];
 }
 -(void) socketInit{
-    NSLog(@"initsocket");
+   /* NSLog(@"initsocket");
     SocketConected=false;
     socket = [[SocketIOClient alloc] initWithSocketURL:@"http://www.virtual-guardian.com:8303" options:@{@"log": @NO, @"connectParams": @{@"thing": @"value"}}];
     
@@ -392,7 +390,7 @@
     }];
     [socket on:@"colgaron" callback:^(NSArray* data, SocketAckEmitter* ack) {
         [self socketOnEndCall];
-    }];
+    }];*/
 }
 -(void)lostcall {
     [self perdida];
@@ -410,7 +408,7 @@
      if(notificationMessage != nil)[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
      notificationMessage = nil;
     callNotification=nil;
-        [socket close];
+       // [socket close];
     }
     
 
@@ -594,13 +592,14 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             //all you ever do with UIKit.. in your case the reloadData call
             //[self.tableView reloadData];
-            [self.webView stringByEvaluatingJavaScriptFromString:jsCallBack];
+           // [self.webView stringByEvaluatingJavaScriptFromString:jsCallBack];
+            [self.webViewEngine evaluateJavaScript:jsCallBack completionHandler:nil];
         });
         
         self.notificationMessage = nil;
         notificaciones=0;
         [self timerOff];
-        if(socket)[socket close];
+       // if(socket)[socket close];
     }
 }
 

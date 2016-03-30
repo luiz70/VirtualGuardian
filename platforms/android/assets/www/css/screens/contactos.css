@@ -135,3 +135,13 @@
 @media only screen and (min-width : 1000px) and (orientation : landscape){
 	
 }
+/****IPHONE PEQUEÑOS***/
+@media (max-width: 320px){
+	.contacto-item-contenido > h2 {
+		font-size: 3vh !important;
+	}
+	.contacto-item-contenido > p {
+		font-size: 2.8vh !important;
+		font-weight: 400 !important;
+	}
+}

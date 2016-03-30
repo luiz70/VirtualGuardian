@@ -1,5 +1,5 @@
 angular.module('starter.controllers', ['uiGmapgoogle-maps'])
-.controller('Aplicacion', function($scope,$rootScope,Memory,$state,$ionicViewSwitcher,$http,$cordovaDevice,$cordovaNetwork,$ionicHistory,Message,$timeout,Usuario,socket) {
+.controller('Aplicacion', function($scope,$rootScope,Memory,$state,$ionicViewSwitcher,$http,$cordovaDevice,$cordovaNetwork,$ionicHistory,Message,$timeout,Usuario,socket,Push) {
 	$rootScope.port=88;//3200
 	$rootScope.hideSplash=false;
 	//Memory.clean();
@@ -80,6 +80,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 		//muestra mensaje de cerrando sesion
 		Message.showLoading($rootScope.idioma.Login[9]);
 		//realiza un timeout por diseño
+		Push.registra(false);
 		$timeout(function(){
 			socket.close();
 			//limpia la memoria de la aplicacion
@@ -96,6 +97,16 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 			document.location.href="index.html"
 		},300)
 	}
+	window.addEventListener('native.keyboardshow', function(e){
+		var elems=document.getElementsByClassName("popup-container");
+		if(elems.length>0)angular.element(elems[0]).css("height",window.innerHeight+"px")
+    
+  	});
+	window.addEventListener('native.keyboardhide', function(e){
+		var elems=document.getElementsByClassName("popup-container");
+		if(elems.length>0)angular.element(elems[0]).css("height","100%")
+    
+  	});
 	//obtiene el ultimo elemento del nombre del estado
 	$scope.getState=function(name){
 		//separa el nombre del estado en bloques

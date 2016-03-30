@@ -63,7 +63,7 @@ angular.module('starter.services')
 				}
 				else registra("")
 			}else{
-				$cordovaPush.unregister(options).then(function(result) {
+				$cordovaPush.unregister().then(function(result) {
 					registra("");
 				}, function(err) {
 					registra("");

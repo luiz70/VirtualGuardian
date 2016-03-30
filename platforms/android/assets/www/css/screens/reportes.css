@@ -43,7 +43,7 @@ ion-modal-view.reportes ion-content div.select>input{
     background: none;
     height: 100%;
     font-size: 3vh;
-    font-weight: 100;
+    font-weight: 300;
     line-height: 3.2vh !important;
 	color: #B9B9B9;
 }
@@ -134,8 +134,11 @@ width: 100%;
 }
 .resumen-popup>.popup> .popup-body{
 	padding:0px !important;
+	overflow: hidden;
 }
-
+.resumen-popup>.popup> .popup-body ion-header-bar{
+	width: 100% !important;
+}
 .resumen-popup>.popup ion-content{
 position: relative;
     float: left;
@@ -591,4 +594,16 @@ ion-modal-view.reportes ion-content ion-content.lista-reportes-lugares .mapa-sea
 /* TABLET LANDSCAPE*/
 @media only screen and (min-width : 1000px) and (orientation : landscape){
 	
+}
+/****IPHONE PEQUEÑOS***/
+@media (max-width: 320px){
+	ion-view .reporte-titulo {
+		font-size: 2.8vh;
+	}
+	.reporte-item-contenido > h2 {
+		font-size: 3vh;
+	}
+	.reporte-item-contenido > p {
+		font-size: 2.7vh !important;
+	}
 }

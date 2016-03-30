@@ -2,7 +2,7 @@ angular.module('starter.controllers')
 .controller('Mapa', function($scope,Mapa,uiGmapIsReady,$ionicHistory,$rootScope,$timeout,socket,$ionicScrollDelegate,$animate,Lugar,uiGmapGoogleMapApi,$window,Ubicacion){//,Evento,Message) {
 		//variable que controla si se cargo el mapa en pantalla
 	$rootScope.cargandoMapa=true;
-	$scope.mapaCargado=false;
+	$rootScope.mapaCargado=false;
 	$scope.timeout=null
 	$scope.showInfo=$rootScope.info;
 	$rootScope.search=false;
@@ -124,7 +124,7 @@ angular.module('starter.controllers')
 					$scope.resultados=[]
 					$scope.showSearch=false;
 					$scope.buscador=""
-			},300)
+			},500)
 			
 		}
 	})
@@ -152,7 +152,7 @@ angular.module('starter.controllers')
 	}
 	uiGmapGoogleMapApi.then(function(){
 		//declara que el mapa se cargo
-		$scope.mapaCargado=true;
+		
 	})
 	//funcion que se ejecuta cuando el mapa se carga 
 	uiGmapIsReady.promise().then(function(maps){
