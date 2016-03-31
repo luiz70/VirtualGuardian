@@ -82,6 +82,7 @@
     font-size: 6vh;
     color: #C1C1C1;
     background: #686868;
+	padding: 0px !important;
 }
 .llamada-contenedor-boton-circular.activo>button{
     color: #252424;

@@ -137,7 +137,7 @@ angular.module('starter')
 		   if(parseInt(input.Estado)>0)direc.push(scope.idioma.Estados[parseInt(input.Estado)])
 		   var direc=direc.join(", ").toLowerCase().split(" ");
 		   for(var i=0;i<direc.length;i++)
-		   		if(palabras.indexOf(direc[i])<0)direc[i]=direc[i].substr(0,1).toUpperCase()+direc[i].substr(1).toLowerCase();
+		   		if(palabras.indexOf(direc[i])<0 || i==0)direc[i]=direc[i].substr(0,1).toUpperCase()+direc[i].substr(1).toLowerCase();
 			return direc.join(" ")
 	   }
 	}
@@ -169,7 +169,7 @@ angular.module('starter')
 				if(parseInt(input.Estado)>0)direc.push(scope.idioma.Estados[parseInt(input.Estado)])
 				var direc=direc.join(", ").toLowerCase().split(" ");
 				for(var i=0;i<direc.length;i++)
-					if(palabras.indexOf(direc[i])<0)direc[i]=direc[i].substr(0,1).toUpperCase()+direc[i].substr(1).toLowerCase();
+					if(palabras.indexOf(direc[i])<0 || i==0)direc[i]=direc[i].substr(0,1).toUpperCase()+direc[i].substr(1).toLowerCase();
 				return direc.join(" ")
 			}
 			else if(input.Tipo==5)return input.Persona+scope.idioma.Notificaciones[11];
@@ -250,7 +250,7 @@ return function (input,scope) {
 		if(parseInt(input.Estado)>0)direc.push(scope.idioma.Estados[parseInt(input.Estado)])
 		var direc=direc.join(", ").toLowerCase().split(" ");
 		for(var i=0;i<direc.length;i++)
-			if(palabras.indexOf(direc[i])<0)direc[i]=direc[i].substr(0,1).toUpperCase()+direc[i].substr(1).toLowerCase();
+			if(palabras.indexOf(direc[i])<0 || i==0)direc[i]=direc[i].substr(0,1).toUpperCase()+direc[i].substr(1).toLowerCase();
 		return direc.join(" ")
    }else return "";
 }
