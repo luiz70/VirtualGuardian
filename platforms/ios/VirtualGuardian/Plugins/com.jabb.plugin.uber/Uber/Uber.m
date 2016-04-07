@@ -9,8 +9,9 @@
         
         NSDictionary *payloadDictionary = [command.arguments objectAtIndex:0];
         
-            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"uber://"]]) {
-                // Do something awesome - the app is installed! Launch App.
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"uber://"]]) {
+        
+        // Do something awesome - the app is installed! Launch App.
                 
                 //The URL for NSURL will contain additional parameters with predetermined address from and to
                 
@@ -73,17 +74,17 @@
                 }
                 
                 NSString *encodedString = [queryString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:encodedString]];
             }
             else {
                 // No Uber app! Open Mobile Website.
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uber Problem..." 
+               /* UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uber Problem..."
                                         message:@"Looks like you've got an Uber problem. Uber app could not be found!"
                                         delegate:self 
                                         cancelButtonTitle:@"OK" 
                                         otherButtonTitles:nil];
-                [alert show];
+                [alert show];*/
+               pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:@"err"];
                 
             }
     
@@ -92,16 +93,18 @@
            } else {
                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
                
-               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+               /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                                message:@"Found an error in the payload. CDVCommandStatus_ERROR!"
                                                               delegate:self
                                                      cancelButtonTitle:@"OK"
                                                      otherButtonTitles:nil];
-               [alert show];
+               [alert show];*/
+               
            }
     
            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
+
 
     - (void)getAuthenticationToken:(CDVInvokedUrlCommand*)command
     {

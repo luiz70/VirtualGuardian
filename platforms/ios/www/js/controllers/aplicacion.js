@@ -41,12 +41,13 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 	
 	document.addEventListener("pause", function(){
 		//puarda estados y todo
-		angular.element(document.getElementById("app_content")).addClass("invisible")
+		if(!$rootScope.hideSplash) angular.element(document.getElementById("app_content")).addClass("invisible")
 	}, false);
 	document.addEventListener("resume", function(){
 		$rootScope.TimeZone=(new Date()).getTimezoneOffset();
 		if(navigator.splashscreen && !$rootScope.hideSplash)navigator.splashscreen.show();
-		$timeout(function(){
+        if(!$rootScope.hideSplash)
+        $timeout(function(){
 			angular.element(document.getElementById("app_content")).removeClass("invisible")
 			if(navigator.splashscreen)navigator.splashscreen.hide();
 			$rootScope.hideSplash=false;
