@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('Mapa', function($scope,Mapa,uiGmapIsReady,$ionicHistory,$rootScope,$timeout,socket,$ionicScrollDelegate,$animate,Lugar,uiGmapGoogleMapApi,$window,Ubicacion){//,Evento,Message) {
+.controller('Mapa', function($scope,Mapa,uiGmapIsReady,$ionicHistory,$rootScope,$timeout,socket,$ionicScrollDelegate,$animate,Lugar,uiGmapGoogleMapApi,$window,Ubicacion,$cordovaInAppBrowser){//,Evento,Message) {
 		//variable que controla si se cargo el mapa en pantalla
 	$rootScope.cargandoMapa=true;
 	$rootScope.mapaCargado=false;
@@ -218,7 +218,7 @@ angular.module('starter.controllers')
 	}
 	$scope.viajaUber=function(data){
 		var uberData = {
-			clientId: "soShwilTNKeRq6bkY1z9CgPpRxgPr70K",
+			//clientId: "soShwilTNKeRq6bkY1z9CgPpRxgPr70K",
 			toLatitude: ""+data.geometry.location.lat(), 
 			toLongitude: ""+data.geometry.location.lng(),
 			//toAddress: "1 Telegraph Hill Blvd, San Francisco, CA 94133",
@@ -229,10 +229,21 @@ angular.module('starter.controllers')
 			//fromAddress: "1455 Market St, San Francisco, CA 94103",
 			//productId: "a1111c8c-c720-46c3-8534-2fcdd730040d"
 		};
-		if(window.uber)
-		window.uber(uberData, function(error) {
-			console.log("Uber error: ", error);
-		});
+            
+            if(window.uber){
+                $rootScope.hideSplash=true;
+                window.uber(uberData,
+                function(success){
+                },function(error) {
+                    if(cordova)
+                    if(ionic.Platform.isAndroid()){
+                        $cordovaInAppBrowser.open("https://play.google.com/store/apps/details?id=com.ubercab&hl=es_419",'_system');
+                    }else{
+                        $cordovaInAppBrowser.open("https://itunes.apple.com/mx/app/uber/id368677368?mt=8",'_system');
+                    }
+                });
+            }
+            
 	}
 	$rootScope.$watch("selectedMarker",function(newValue){
 		if(newValue){

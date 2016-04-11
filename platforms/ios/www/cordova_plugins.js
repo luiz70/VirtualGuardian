@@ -213,6 +213,14 @@ module.exports = [
         "file": "plugins/cordova-plugin-x-toast/test/tests.js",
         "id": "cordova-plugin-x-toast.tests",
         "pluginId": "cordova-plugin-x-toast"
+    },
+    {
+        "file": "plugins/com.dooble.audiotoggle/www/audiotoggle.js",
+        "id": "com.dooble.audiotoggle.AudioToggle",
+        "pluginId": "com.dooble.audiotoggle",
+        "clobbers": [
+            "AudioToggle"
+        ]
     }
 ];
 module.exports.metadata = 

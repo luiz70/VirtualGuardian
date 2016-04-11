@@ -145,5 +145,14 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.dooble.audiotoggle": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/alongubkin/audiotoggle",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

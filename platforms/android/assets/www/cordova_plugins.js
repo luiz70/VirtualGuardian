@@ -161,6 +161,13 @@ module.exports = [
         "file": "plugins/com.jabb.plugin.uber/uber.js",
         "id": "com.jabb.plugin.uber.uber",
         "runs": true
+    },
+    {
+        "file": "plugins/com.dooble.audiotoggle/www/audiotoggle.js",
+        "id": "com.dooble.audiotoggle.AudioToggle",
+        "clobbers": [
+            "AudioToggle"
+        ]
     }
 ];
 module.exports.metadata = 

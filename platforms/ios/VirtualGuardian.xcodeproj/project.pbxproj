@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1A2D68391CBC02DF00DD157F /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 1A2D68381CBC02DF00DD157F /* Sounds */; };
@@ -49,6 +48,8 @@
 		D4AE2CF489784D388B12D88D /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 02084631D32746EFA22DC9DC /* CDVSplashScreen.m */; };
 		DC00BFDD68E448519A3BA29E /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BEEBB7A52042C89C80708F /* CDVReachability.m */; };
 		FE154C3FBA3941D1BCDB5079 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 98D3B74556744FFD9DD11E41 /* SQLitePlugin.m */; };
+		198E3AB193744429BF713AD9 /* AudioTogglePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA78E02A1E4632841398C2 /* AudioTogglePlugin.m */; };
+		36AD14E3422C4A3D9CC2B5CC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0207B8F409049A5ADB02C0C /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,9 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = VirtualGuardian/config.xml; sourceTree = "<group>"; };
 		FC234AC8D44D42A58B368303 /* CDVStatusBar.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVStatusBar.h; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; };
 		FE4A62A3312E469389EF4DF0 /* CDVConnection.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVConnection.h; path = "cordova-plugin-network-information/CDVConnection.h"; sourceTree = "<group>"; };
+		E9EA78E02A1E4632841398C2 /* AudioTogglePlugin.m */ = {isa = PBXFileReference; name = "AudioTogglePlugin.m"; path = "com.dooble.audiotoggle/AudioTogglePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		02EDEF2F86C24919BF5A122E /* AudioTogglePlugin.h */ = {isa = PBXFileReference; name = "AudioTogglePlugin.h"; path = "com.dooble.audiotoggle/AudioTogglePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		B0207B8F409049A5ADB02C0C /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,7 @@
 				33B4ECC21B364A6380A7AB43 /* CoreTelephony.framework in Frameworks */,
 				2CF170BD186A43CDA116EA99 /* libsqlite3.dylib in Frameworks */,
 				22C8C67B1EDD4552A03F07C5 /* QuartzCore.framework in Frameworks */,
+				36AD14E3422C4A3D9CC2B5CC /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +247,7 @@
 				89D16C0B6BF44C7C8987F261 /* CoreTelephony.framework */,
 				312BC189138C4FBC846D07CB /* libsqlite3.dylib */,
 				6E300E6F2F0C4EA9911A688F /* QuartzCore.framework */,
+				B0207B8F409049A5ADB02C0C /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -312,6 +318,8 @@
 				E8587CFBC3644355BC33819C /* Toast.m */,
 				1BB60352190043B69588029C /* Toast+UIView.h */,
 				B9950FD7A4814FB69B2B4A95 /* Toast.h */,
+				E9EA78E02A1E4632841398C2 /* AudioTogglePlugin.m */,
+				02EDEF2F86C24919BF5A122E /* AudioTogglePlugin.h */,
 			);
 			name = Plugins;
 			path = VirtualGuardian/Plugins;
@@ -465,6 +473,7 @@
 				FE154C3FBA3941D1BCDB5079 /* SQLitePlugin.m in Sources */,
 				5CCC2368E40042C8B12E18C4 /* Toast+UIView.m in Sources */,
 				42FB23D57EAB4CCBA6C1A3C1 /* Toast.m in Sources */,
+				198E3AB193744429BF713AD9 /* AudioTogglePlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

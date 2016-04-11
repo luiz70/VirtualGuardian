@@ -83,6 +83,10 @@
                         {
                             "xml": "<feature name=\"Toast\"><param name=\"ios-package\" value=\"Toast\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AudioTogglePlugin\"><param name=\"ios-package\" value=\"AudioTogglePlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -149,6 +153,9 @@
             "PACKAGE_NAME": "com.app.virtualguardian"
         },
         "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.app.virtualguardian"
+        },
+        "com.dooble.audiotoggle": {
             "PACKAGE_NAME": "com.app.virtualguardian"
         }
     },
@@ -367,6 +374,14 @@
             "file": "plugins/cordova-plugin-x-toast/test/tests.js",
             "id": "cordova-plugin-x-toast.tests",
             "pluginId": "cordova-plugin-x-toast"
+        },
+        {
+            "file": "plugins/com.dooble.audiotoggle/www/audiotoggle.js",
+            "id": "com.dooble.audiotoggle.AudioToggle",
+            "pluginId": "com.dooble.audiotoggle",
+            "clobbers": [
+                "AudioToggle"
+            ]
         }
     ]
 }

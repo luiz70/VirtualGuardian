@@ -57,6 +57,9 @@
         },
         "cordova-plugin-x-toast": {
             "PACKAGE_NAME": "com.app.virtualguardian"
+        },
+        "com.dooble.audiotoggle": {
+            "PACKAGE_NAME": "com.app.virtualguardian"
         }
     },
     "dependent_plugins": {}
