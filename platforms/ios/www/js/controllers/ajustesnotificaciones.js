@@ -27,6 +27,17 @@ angular.module('starter.controllers')
 			else return d+" "+$rootScope.idioma.General[15];
 		}
 	}
+	$scope.TonosSelect={
+		options:[{text:"Bell",tono:"sonidos/Bell.mp3",selected:true},{text:"Cool",tono:"sonidos/Cool.mp3",selected:false},{text:"Cyber",tono:"sonidos/Cyber.mp3",selected:false},{text:"Double",tono:"sonidos/Double.mp3",selected:false},{text:"Long",tono:"sonidos/Long.mp3",selected:false},{text:"Ping",tono:"sonidos/Ping.mp3",selected:false}],
+		funcionSeleccion:function(res){
+			for(var i=0;$scope.TonosSelect.options.length;i++){
+				if(res.text!=$scope.TonosSelect.options[i].text)$scope.TonosSelect.options[i].selected=false;
+			}
+			Message.closeSelect();
+		},
+		hideTodos:true,
+	}
+	
 	$timeout(function(){
 		$scope.cargandoAjustesN=true;
 		socket.getSocket().on("getAjustesNotificaciones",$scope.cargaAjustes)
@@ -118,5 +129,10 @@ angular.module('starter.controllers')
 		$scope.ANotificaciones.Estados=_.compact(_.map($scope.EstadosSelect.options,function(v,i){if(!v.selected)return parseInt(v.id)}))
 		socket.getSocket().emit("setAjustesNotificaciones",$scope.ANotificaciones)
 		Message.showLoading($rootScope.idioma.General[10]);
+	}
+	$scope.cambiaTono=function(){
+		$scope.TonosSelect.temp=JSON.stringify($scope.TonosSelect.options);
+		$scope.select=$scope.TonosSelect;
+		Message.selectMultiple($scope)
 	}
 })
