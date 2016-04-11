@@ -218,7 +218,7 @@ angular.module('starter.controllers')
 	}
 	$scope.viajaUber=function(data){
 		var uberData = {
-			/*clientId: "soShwilTNKeRq6bkY1z9CgPpRxgPr70K",*/
+			//clientId: "soShwilTNKeRq6bkY1z9CgPpRxgPr70K",
 			toLatitude: ""+data.geometry.location.lat(), 
 			toLongitude: ""+data.geometry.location.lng(),
 			//toAddress: "1 Telegraph Hill Blvd, San Francisco, CA 94133",
@@ -231,17 +231,14 @@ angular.module('starter.controllers')
 		};
             
             if(window.uber){
-            $rootScope.hideSplash=true;
-            window.uber(uberData, function(success){
-                        alert(success);
-                        },function(2) {
-                        alert(1);
-                    
+                $rootScope.hideSplash=true;
+                window.uber(uberData,
+                function(success){
+                },function() {
                     if(error){
-                    if(cordova)$cordovaInAppBrowser.open("https://itunes.apple.com/mx/app/uber/id368677368?mt=8",'_system');
+                            if(cordova)$cordovaInAppBrowser.open("https://itunes.apple.com/mx/app/uber/id368677368?mt=8",'_system');
                     }
-                    console.log(error);
-		});
+                });
             }
             
 	}
