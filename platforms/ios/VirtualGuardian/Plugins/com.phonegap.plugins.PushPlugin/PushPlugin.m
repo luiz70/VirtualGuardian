@@ -528,7 +528,8 @@
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
     localNotification.alertBody = [NSString stringWithFormat:@"%@: %@",titulo,subtitulo];
     //if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0.0"))localNotification.alertTitle=[NSString stringWithFormat:@"%@",BigTitle];
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    //localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.soundName = @"Sounds/Long.wav";
     localNotification.applicationIconBadgeNumber = 0;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }

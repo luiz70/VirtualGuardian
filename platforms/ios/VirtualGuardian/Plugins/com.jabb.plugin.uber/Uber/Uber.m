@@ -77,29 +77,14 @@
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:encodedString]];
             }
             else {
-                // No Uber app! Open Mobile Website.
-               /* UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uber Problem..."
-                                        message:@"Looks like you've got an Uber problem. Uber app could not be found!"
-                                        delegate:self 
-                                        cancelButtonTitle:@"OK" 
-                                        otherButtonTitles:nil];
-                [alert show];*/
-               pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:@"err"];
-                
+               pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR ];
+                payloadDictionary=nil;
             }
     
            if (payloadDictionary != nil) {
                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
            } else {
                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-               
-               /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                               message:@"Found an error in the payload. CDVCommandStatus_ERROR!"
-                                                              delegate:self
-                                                     cancelButtonTitle:@"OK"
-                                                     otherButtonTitles:nil];
-               [alert show];*/
-               
            }
     
            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];

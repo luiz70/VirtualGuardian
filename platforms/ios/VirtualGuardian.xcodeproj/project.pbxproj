@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
+		1A2D68391CBC02DF00DD157F /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 1A2D68381CBC02DF00DD157F /* Sounds */; };
 		1A615A081CAAF88500AC8999 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A615A071CAAF88500AC8999 /* PushKit.framework */; };
 		1A615A0B1CAAF93700AC8999 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A615A0A1CAAF93700AC8999 /* UIKit.framework */; };
 		1A615A0D1CAAF95A00AC8999 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A615A0C1CAAF95A00AC8999 /* StoreKit.framework */; };
@@ -76,6 +77,7 @@
 		14A78EB9EF764D66A67C77D7 /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		16F2349AC19947718D61B2C6 /* AppDelegate+notification.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+notification.m"; path = "com.phonegap.plugins.PushPlugin/AppDelegate+notification.m"; sourceTree = "<group>"; };
 		19CCCA1E37BD4501950CC52F /* CDVDevice.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; };
+		1A2D68381CBC02DF00DD157F /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sounds; path = VirtualGuardian/Sounds; sourceTree = "<group>"; };
 		1A615A071CAAF88500AC8999 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		1A615A0A1CAAF93700AC8999 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1A615A0C1CAAF95A00AC8999 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -190,6 +192,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				1A2D68381CBC02DF00DD157F /* Sounds */,
 				EB87FDF41871DAF40020F90C /* config.xml */,
 				EB87FDF31871DA8E0020F90C /* www */,
 				EB87FDF11871DA420020F90C /* Staging */,
@@ -403,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2D68391CBC02DF00DD157F /* Sounds in Resources */,
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				3047A5131AB8059700498E2A /* build-release.xcconfig in Resources */,
 				3047A5141AB8059700498E2A /* build.xcconfig in Resources */,

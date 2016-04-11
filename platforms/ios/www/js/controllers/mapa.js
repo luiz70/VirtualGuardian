@@ -234,9 +234,12 @@ angular.module('starter.controllers')
                 $rootScope.hideSplash=true;
                 window.uber(uberData,
                 function(success){
-                },function() {
-                    if(error){
-                            if(cordova)$cordovaInAppBrowser.open("https://itunes.apple.com/mx/app/uber/id368677368?mt=8",'_system');
+                },function(error) {
+                    if(cordova)
+                    if(ionic.Platform.isAndroid()){
+                        $cordovaInAppBrowser.open("https://play.google.com/store/apps/details?id=com.ubercab&hl=es_419",'_system');
+                    }else{
+                        $cordovaInAppBrowser.open("https://itunes.apple.com/mx/app/uber/id368677368?mt=8",'_system');
                     }
                 });
             }
