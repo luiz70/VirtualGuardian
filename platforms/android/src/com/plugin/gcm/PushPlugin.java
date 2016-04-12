@@ -28,7 +28,8 @@ public class PushPlugin extends CordovaPlugin {
 	public static final String REGISTER = "register";
 	public static final String UNREGISTER = "unregister";
 	public static final String CAR = "carLocation";
-	public static final String SAVE = "setVariable";
+	public static final String SET = "setVariable";
+	public static final String GET = "getVariable";
 	public static final String EXIT = "exit";
 
 	private static CordovaWebView gWebView;
@@ -85,7 +86,8 @@ public class PushPlugin extends CordovaPlugin {
 			}
 
 		} else if (UNREGISTER.equals(action)) {
-
+			SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.app.virtualguardian", Context.MODE_PRIVATE);
+			prefs.edit().putString("Registered", "0").apply();
 			GCMRegistrar.unregister(getApplicationContext());
 
 			Log.v(TAG, "UNREGISTER");
@@ -119,7 +121,7 @@ public class PushPlugin extends CordovaPlugin {
 				callbackContext.error(e.getMessage());
 			}
 
-		}else if (SAVE.equals(action)) {
+		}else if (SET.equals(action)) {
 			try {
 				JSONObject jo = data.getJSONObject(0);
 				gWebView = this.webView;
@@ -129,6 +131,22 @@ public class PushPlugin extends CordovaPlugin {
 				prefs.edit().putString(Key, Value).apply();
 				result = true;
 				callbackContext.success();
+			} catch (JSONException e) {
+				
+				result = false;
+				callbackContext.error(e.getMessage());
+			}
+			
+		}else if (GET.equals(action)) {
+			try {
+				JSONObject jo = data.getJSONObject(0);
+				gWebView = this.webView;
+				String Key = jo.get("Key").toString();
+				
+				SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.app.virtualguardian", Context.MODE_PRIVATE);
+				String res=prefs.getString(Key,"null");
+				result = true;
+				callbackContext.success(res);
 			} catch (JSONException e) {
 				
 				result = false;

@@ -213,6 +213,7 @@ angular.module('starter.controllers')
 			13:"Notificacion",
 			14:"Alerta",
 			15:"Ajustes generales",
+			16:"Error al guardar los ajustes"
 			
 		},
 		Iconos:[
@@ -244,13 +245,17 @@ angular.module('starter.controllers')
 				Descripcion:"Acto de perseguir a delincuentes tras hecho delictivo.",
 				Imagen:"notificaciones/7"
 				},
+				{Nombre:"Bloqueo",
+				Descripcion:"Obstrucción parcial o total de las vías de transito por personas ajenas a las fuerzas policiacos.",
+				Imagen:"notificaciones/8"
+				},
 				{Nombre:"Robo",
 				Descripcion:"Robo a establecimientos (casa, restaurantes, locales, etc) en donde no hubo violencia y no existen testigos de los hechos.",
-				Imagen:"notificaciones/8"
+				Imagen:"notificaciones/9"
 				},
 				{Nombre:"Robo mercancía",
 				Descripcion:"Robo a vehículo que transporta mercancía en donde no hubo violencia y no existen testigos de los hechos.",
-				Imagen:"notificaciones/9"
+				Imagen:"notificaciones/10"
 				},
 				{Nombre:"Tips Virtual Guardian",
 				Descripcion:"Icono utilizado para representar los consejos que Virtual Guardian te enviará para ayudarte a estar siempre protegido.",

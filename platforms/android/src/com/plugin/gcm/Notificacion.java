@@ -21,4 +21,5 @@ public interface Notificacion {
 	int getSmallIcon(int size);
 	void getGroupContent(List<Notificacion> notificaciones, InboxStyle estilo);
 	boolean isDanger();
+	String getSound();
 }

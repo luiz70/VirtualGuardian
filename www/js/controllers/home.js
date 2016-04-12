@@ -1,5 +1,6 @@
 angular.module('starter.controllers')
-.controller('Home', function($scope,$timeout,$ionicSideMenuDelegate,$state,socket,$rootScope,Memory,$ionicViewSwitcher,Usuario,Notificacion,Contactos,Reporte,Llamada,Mapa,Filtros,sql,Usuario,Push,uiGmapGoogleMapApiManualLoader,uiGmapGoogleMapApi,$animate) {
+.controller('Home', function($scope,$timeout,$ionicSideMenuDelegate,$state,socket,$rootScope,Memory,$ionicViewSwitcher,Usuario,Notificacion,Contactos,Reporte,Llamada,Mapa,Filtros,sql,Usuario,Push,uiGmapGoogleMapApiManualLoader,uiGmapGoogleMapApi,$animate,Preferencias) {
+	
 	$scope.$on('$ionicView.afterEnter',function(){
 		if(Memory.get("Usuario"))
 			$timeout(function() {
@@ -48,27 +49,31 @@ angular.module('starter.controllers')
 if (img.complete) img.onload();
 		
 	}
+	$scope.loadMapa=function(){
+		
+		uiGmapGoogleMapApiManualLoader.load();
+	}
 	if(!Memory.get("Usuario")){
 		$ionicViewSwitcher.nextTransition("none");
 		$ionicViewSwitcher.nextDirection('enter');
 		$state.go("app.login")
 	}else{
-		$timeout(function(){
+		//$timeout(function(){
+		socket.inicializa();
+		$scope.loadMapa();
+		//},500)
+	}
+	
+	uiGmapGoogleMapApi.then(function(){
 		Llamada.inicializa();
 		angular.element(document.getElementsByClassName("mapa-search")[0]).css("display","block")
 		$rootScope.Usuario=Memory.get("Usuario")
-		socket.inicializa();
+		
 		$rootScope.sql=sql;
-		$scope.loadMapa();
-		},500)
-	}
-	$scope.loadMapa=function(){
 		$rootScope.cargandoMapa=true;
-		uiGmapGoogleMapApiManualLoader.load();
-	}
-	uiGmapGoogleMapApi.then(function(){
-		Mapa.inicializa();
 	})
+		Mapa.inicializa();
+	//})
 	
 	$scope.conectedonce=function(evt,res){
 		$scope.conectado();
@@ -150,5 +155,5 @@ if (img.complete) img.onload();
 	$rootScope.$watch("Asuntos",function(newValue){
 		if(newValue) Memory.set("Asuntos",$rootScope.Asuntos)	
 	})
-	
+	//Preferencias.set("IdUsuario",$rootScope.Usuario.Id);
 })

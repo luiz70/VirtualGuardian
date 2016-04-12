@@ -108,5 +108,9 @@ public class ContactNotification implements Notificacion {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	@Override
+	public String getSound() {
+		// TODO Auto-generated method stub
+		return "Alerta";
+	}
 }

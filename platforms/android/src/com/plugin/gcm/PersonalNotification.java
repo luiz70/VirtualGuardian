@@ -106,4 +106,10 @@ public class PersonalNotification implements Notificacion {
 		return false;
 	}
 
+	@Override
+	public String getSound() {
+		// TODO Auto-generated method stub
+		return "Alerta";
+	}
+
 }

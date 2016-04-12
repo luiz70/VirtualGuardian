@@ -38,7 +38,6 @@ angular.module('starter.services')
 	})
 	
     socket.on("connect",function(){
-		console.log(3);
 		$rootScope.$broadcast("socket.connect",true)
         conectado=true;
 		$rootScope.socketState=true;

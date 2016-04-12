@@ -1,8 +1,9 @@
 angular.module('starter.services')
-.factory('Usuario',function($http,$rootScope,socket,$interval,Message,Memory,$timeout){
+.factory('Usuario',function($http,$rootScope,socket,$interval,Message,Memory,$timeout,Preferencias){
 	$rootScope.Usuario;
 	$timeout(function(){
-	if(window.plugins.pushNotification)window.plugins.pushNotification.setVariable(function () {}, function () {},{"Key":"IdUsuario","Value":""+$rootScope.Usuario.Id});
+		//saveidusuario
+		Preferencias.set("IdUsuario",$rootScope.Usuario.Id)
 	},4000);
 	var interval=null;
 	var refresh=function(){
@@ -17,7 +18,7 @@ angular.module('starter.services')
 		if(data){
 			//sustituye
 			_.extend($rootScope.Usuario,data)
-			console.log($rootScope.Usuario);
+			//console.log($rootScope.Usuario);
 			//$rootScope.Usuario=data
 		}
 	}
@@ -25,7 +26,9 @@ angular.module('starter.services')
 		Memory.set("Usuario",$rootScope.Usuario)
 	},true)
 	$rootScope.$watch("Usuario.Id",function(newVal, oldVal){
-		if(window.plugins.pushNotification)window.plugins.pushNotification.setVariable(function () {}, function () {},{"Key":"IdUsuario","Value":""+$rootScope.Usuario.Id});
+		Preferencias.set("IdUsuario",$rootScope.Usuario.Id)
+		//Preferencias.get("IdUsuario",function(res){})
+		//if(window.plugins.pushNotification)window.plugins.pushNotification.setVariable(function () {}, function () {},{"Key":"IdUsuario","Value":""+$rootScope.Usuario.Id});
 	},true)
 	return {
 		login:function(credentials){

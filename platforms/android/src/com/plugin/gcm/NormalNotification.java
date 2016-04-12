@@ -140,6 +140,8 @@ public class NormalNotification implements Notificacion {
 		SharedPreferences prefs = NotificationStack.context.getSharedPreferences("com.app.virtualguardian", Context.MODE_PRIVATE); 
 		int distancia=pingGps(Latitud,Longitud);
 		int distanciaAuto=pingCar();
+		if(distancia<0)distancia =Integer.MAX_VALUE;
+		if(distanciaAuto<0)distanciaAuto =Integer.MAX_VALUE;
 		int maxPer = Integer.parseInt(prefs.getString("distanciaPersonal","3000")); 
 		int maxCar = Integer.parseInt(prefs.getString("distanciaAuto","3000"));
 		if(distancia<=maxPer){
@@ -183,9 +185,9 @@ public class NormalNotification implements Notificacion {
 	    } else {
 	      latUser=0;
 	      lngUser=0;
-	      return -1;
+	      return Integer.MAX_VALUE;
 	    }
-		}else return -1;
+		}else return Integer.MAX_VALUE;
 	    
 	}
 	public int onLocationChanged(Location location, double lat, double lon) {
@@ -251,6 +253,12 @@ public class NormalNotification implements Notificacion {
 		} catch (IOException e) {
 		    // TODO Auto-generated catch block
 		}   
+	}
+
+	@Override
+	public String getSound() {
+		// TODO Auto-generated method stub
+		return "Tono";
 	}
 	
 	

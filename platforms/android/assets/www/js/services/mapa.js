@@ -1,17 +1,10 @@
 angular.module('starter.services', ['LocalStorageModule','ngError'])
-.factory('Mapa',function($rootScope,uiGmapGoogleMapApi,uiGmapIsReady,socket,Memory,$timeout,Ubicacion,Radio,Auto,Filtros,Eventos,Cluster,Lugar){
+.factory('Mapa',function($rootScope,uiGmapGoogleMapApi,uiGmapIsReady,socket,Memory,$timeout,Ubicacion,Radio,Auto,Filtros,Eventos,Cluster,Lugar,$animate){
 	
 	var inicializa=function(){
 		//uiGmapGoogleMapApi.then(function(maps) {
 		
-		Ubicacion.inicializa();
-		Auto.inicializa();
-		Radio.inicializa();
-		Filtros.inicializa();
-		Eventos.inicializa();
-		Cluster.inicializa();
-		Lugar.inicializa()
-		Ubicacion.refreshLocation();
+		
 		
 		//carga la informacion del mapa guardada
    		if(!$rootScope.map)$rootScope.map=Memory.get('Mapa')
@@ -85,16 +78,20 @@ angular.module('starter.services', ['LocalStorageModule','ngError'])
 		}
 		
 		//})
-		uiGmapIsReady.promise().then(function(maps){
+		uiGmapGoogleMapApi.then(function(maps) {
+			
+		//uiGmapIsReady.promise().then(function(maps){
 		//carga los eventos
 		//Eventos.refresh();
 		//animacion del mapa una vez cargado
 		$rootScope.mapaCargado=true;
-		angular.element(document.getElementsByClassName("angular-google-map")).addClass("aparece-map")
-		$timeout(function(){
-			
-			angular.element(document.getElementsByClassName("angular-google-map")).addClass("visible")
-		},1000)
+		//angular.element(document.getElementsByClassName("angular-google-map")).addClass("aparece-map")
+		$animate.removeClass(document.getElementById("map-main"),'hide-mapa-cont')
+		$animate.addClass(document.getElementById("map-main"),'show-mapa-cont')
+		/*$timeout(function(){
+			google.maps.event.trigger($rootScope.map.getGMap(), 'resize');
+			//angular.element(document.getElementsByClassName("angular-google-map")).addClass("visible")
+		},1000)*/
 		window.addEventListener("orientationchange", function(){
     		if($rootScope.ubicacion)
 				$timeout(function(){
@@ -102,13 +99,21 @@ angular.module('starter.services', ['LocalStorageModule','ngError'])
 				},1000)
 			
 		});
+		Ubicacion.inicializa();
+		Auto.inicializa();
+		Radio.inicializa();
+		Filtros.inicializa();
+		Eventos.inicializa();
+		Cluster.inicializa();
+		Lugar.inicializa()
+		Ubicacion.refreshLocation();
     	
 	})   
 	};
 	//function que vigila la region visualizada en el mapa
 	$rootScope.$watch('map.bounds', function(newValues, oldValues, scope) {
 		if(newValues){
-			if(!$rootScope.radio.activo)Eventos.refresh();
+			if($rootScope.radio && !$rootScope.radio.activo)Eventos.refresh();
 		}
 	},true)
 	//function que vigila las propiedades del mapa para guardarlas en caso de algun cambio

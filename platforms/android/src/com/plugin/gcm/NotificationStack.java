@@ -17,6 +17,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -202,7 +203,9 @@ public class NotificationStack {
 		PendingIntent contentIntent = PendingIntent.getActivity(gcm, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		
 		//DEFAULTS DE LA NOTIFICACION
-		int defaults = Notification.DEFAULT_ALL;			
+		int defaults= Notification.DEFAULT_VIBRATE;	
+		int sound=getSound(notificaciones.get(0).getSound());
+		
 		//PROPIEDADES WEAR
 		Bitmap background = notificaciones.get(0).getBackground();
 		NotificationCompat.WearableExtender wearableExtender =
@@ -211,7 +214,8 @@ public class NotificationStack {
 		
 		Bitmap largeIcon=notificaciones.get(0).getLargeIcon(notificaciones.size());
 		int smallIcon=notificaciones.get(0).getSmallIcon(notificaciones.size());
-		
+		//Uri soundn = getSound();
+		//if(soundn==null)defaults=Notification.DEFAULT_SOUND;
 		Notification summaryNotification;
 		
 		
@@ -230,10 +234,9 @@ public class NotificationStack {
 				ticker="Notificación Virtual Guardian";
 				Log.d("Debug",ticker);
 			}
-
 		// Create an InboxStyle notification
 		summaryNotification = new NotificationCompat.Builder(context)
-				.setDefaults(defaults)
+				
 		        .setContentTitle("Virtual Guardian")
 		        .setSmallIcon(smallIcon)
 		        .setLargeIcon(largeIcon)
@@ -247,20 +250,19 @@ public class NotificationStack {
 		        .setWhen(System.currentTimeMillis())
 		        .setTicker(ticker+"\n"+notificaciones.get(0).getTitle()+": "+notificaciones.get(0).getBody())
 		        .extend(wearableExtender)
-		        //.setSound(sound)
 		        .build();
 				
 					
 		}else{
 			String ticker="Virtual Guardian Notification";
-			//Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.audio);
 			if(Locale.getDefault().getLanguage().equals("es")){
 				ticker="Notificación Virtual Guardian";
 				Log.d("Debug",ticker);
 			}
+			
 			summaryNotification =
 					new NotificationCompat.Builder(context)
-						.setDefaults(defaults)
+						//.setDefaults(defaults)
 						.setSmallIcon(notificaciones.get(0).getSmallIcon(notificaciones.size()))
 						.setLargeIcon(largeIcon)
 						.setAutoCancel(true)
@@ -268,17 +270,35 @@ public class NotificationStack {
 						.setWhen(System.currentTimeMillis())
 						.setContentTitle(notificaciones.get(0).getTitle())
 						.setTicker(ticker+"\n"+notificaciones.get(0).getTitle()+": "+notificaciones.get(0).getBody())
-						//.setSound(sound)
 						.setContentText(notificaciones.get(0).getBody())
 						.setContentIntent(contentIntent)
 						.extend(wearableExtender)
 						.build();
 		}
 		
+		if(sound>0){
+			summaryNotification.sound=Uri.parse("android.resource://" + context.getPackageName() + "/" + sound);
+		}else{
+			defaults=Notification.DEFAULT_ALL;
+		}
+		summaryNotification.defaults=defaults;
 		notificationManager.cancel(notificaciones.get(0).getType());
 		notificationManager.notify(notificaciones.get(0).getType(), summaryNotification);
 		return extras;
 		
+	}
+	private int getSound(String type){
+		SharedPreferences prefs = context.getSharedPreferences("com.app.virtualguardian", Context.MODE_PRIVATE);
+		String sound=prefs.getString(type,"");
+		switch(sound.toLowerCase()){
+		case "bell": return R.raw.bell;
+		case "cool":return R.raw.cool;
+		case "cyber":return R.raw.cyber;
+		case "double":return R.raw.doubletn;
+		case "long":return R.raw.longtn;
+		case "ping":return R.raw.ping;
+		default:return -1;
+		}
 	}
 	
 	

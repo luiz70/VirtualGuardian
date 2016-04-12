@@ -94,5 +94,9 @@ public class CodigoNotification implements Notificacion {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	@Override
+	public String getSound() {
+		// TODO Auto-generated method stub
+		return "Tono";
+	}
 }

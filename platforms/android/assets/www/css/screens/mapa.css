@@ -10,16 +10,44 @@
 	width:100% !important;
 }
 .angular-google-map{
+	/*opacity:0;*/
+}
+#map-main{
+	background:#e5e3df !important;
 	opacity:0;
+	-webkit-transform: translate3d(0, 100vh, 0);
+	transform: translate3d(0, 100vh, 0);
+}
+.hide-mapa-cont{
+	transition-delay:0s;
+	transition-duration:0.3s;
+	transition-timing-function:ease-in-out;
+	opacity:0 !important;
+	-webkit-transform: translate3d(0, 100vh, 0);
+}
+.show-mapa-cont{
+	transition-delay:0s;
+	transition-duration:1s;
+	transition-timing-function:ease-in-out;
+	opacity:1 !important;
+	-webkit-transform: translate3d(0px,0px, 0px);
+	transform: translate3d(0,0,0) !important;
+	
 }
 .google-map img {
     max-width: none;
 }
 .data-type-disabled{
-	position: relative;
+	/*position: relative;
     float: left;
     width: 100%;
-    height: 100%;
+    height: 100%;*/
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100vw;
+	height:90.5vh;
+	
 }
 .data-type-disabled >ui-gmap-google-map,.data-type-disabled >ui-gmap-google-map>div, .data-type-disabled >ui-gmap-google-map>div>div{
     position: relative;
@@ -982,7 +1010,7 @@ position:relative;
 
 @keyframes apareceMapa {
    0% {opacity: 0;
-   -webkit-transform: translate3d(0, 3vh, 0);
+   -webkit-transform: translate3d(0, 100vh, 0);
    }
    50%{
 	   -webkit-transform: translate3d(0, 0, 0);
@@ -991,6 +1019,7 @@ position:relative;
    	
    }
 }
+
 .angular-google-map-container { 
     height: 100vh;
     width: 100vw;

@@ -1,8 +1,8 @@
 <ion-view  class="view-seccion fast " hide-nav-bar="false" can-swipe-back="false" >
 <ion-content scroll="false">
-<div data-tap-disabled="true" class="data-type-disabled" >
+<div id="map-main" data-tap-disabled="true" class="data-type-disabled" >
 	
-    <ui-gmap-google-map class="animate-enter-mapa fast" control="map" center='map.center' zoom='map.zoom'  options='map.options' pan='true' events="map.events" ng-cloak>
+    <ui-gmap-google-map class="" control="map" center='map.center' zoom='map.zoom'  options='map.options' pan='true' events="map.events" ng-cloak>
         <ui-gmap-circle center='radio.center' control='radio' radius='radio.radio' fill='radio.fill'   stroke='radio.stroke' visible='radio.activo && radio.visible' events="radio.events"></ui-gmap-circle>
     
     <ui-gmap-marker idKey='1' coords='auto.position'  options="auto.options" icon="content"  events="auto.events" >

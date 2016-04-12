@@ -97,6 +97,20 @@ PushNotification.prototype.setVariable = function(successCallback, errorCallback
     }
     cordova.exec(successCallback, errorCallback, "PushPlugin", "setVariable", [options]);
 };
+PushNotification.prototype.getVariable = function(successCallback, errorCallback, options) {
+    if (errorCallback == null) { errorCallback = function() {}}
+
+    if (typeof errorCallback != "function")  {
+        console.log("PushNotification.setVar failure: failure parameter not a function");
+        return
+    }
+
+    if (typeof successCallback != "function") {
+        console.log("PushNotification.setVar failure: success callback parameter must be a function");
+        return
+    }
+    cordova.exec(successCallback, errorCallback, "PushPlugin", "getVariable", [options]);
+};
 
 if(!window.plugins) {
     window.plugins = {};

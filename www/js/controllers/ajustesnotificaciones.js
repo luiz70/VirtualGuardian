@@ -1,11 +1,12 @@
 angular.module('starter.controllers')
-.controller('AjustesNotificaciones', function($scope,$rootScope,Message,socket,$timeout) {
+.controller('AjustesNotificaciones', function($scope,$rootScope,Message,socket,$timeout,Preferencias) {
 	$scope.cargandoAjustesN=true;
 	$scope.EstadosSelect={
 		options:_.map($rootScope.idioma.Estados,function(v,i){return {text:v,selected:true,id:i}}),
 		funcionSeleccion:function(res){
 			//Message.closeSelectMultiple();		
 		},
+		titulo:"",
 		optionsLength:function(){
 			var d=0;
 			for(var i=0;i<$scope.EstadosSelect.options.length;i++)
@@ -28,20 +29,59 @@ angular.module('starter.controllers')
 		}
 	}
 	$scope.TonosSelect={
-		options:[{text:"Bell",tono:"sonidos/Bell.mp3",selected:true},{text:"Cool",tono:"sonidos/Cool.mp3",selected:false},{text:"Cyber",tono:"sonidos/Cyber.mp3",selected:false},{text:"Double",tono:"sonidos/Double.mp3",selected:false},{text:"Long",tono:"sonidos/Long.mp3",selected:false},{text:"Ping",tono:"sonidos/Ping.mp3",selected:false}],
+		options:[{text:$rootScope.idioma.General[14],selected:false},{text:"Bell",selected:false},{text:"Cool",selected:false},{text:"Cyber",selected:false},{text:"Double",selected:false},{text:"Long",selected:false},{text:"Ping",selected:false}],
 		funcionSeleccion:function(res){
-			for(var i=0;$scope.TonosSelect.options.length;i++){
+			for(var i=0;i<$scope.TonosSelect.options.length;i++){
 				if(res.text!=$scope.TonosSelect.options[i].text)$scope.TonosSelect.options[i].selected=false;
 			}
-			Message.closeSelect();
+			if(AudioToggle){
+                AudioToggle.playRingTone(res.text.toLowerCase(),true);
+			}
+			//Message.closeSelect();
+		},
+		optionsSelected:function(){
+			for(var i=0;i<$scope.TonosSelect.options.length;i++)
+				if($scope.TonosSelect.options[i].selected)return $scope.TonosSelect.options[i].text
+			return $scope.TonosSelect.options[0].text
 		},
 		hideTodos:true,
 	}
-	
+	$scope.AlertasSelect={
+		options:[{text:$rootScope.idioma.General[14],selected:false},{text:"Bell",selected:false},{text:"Cool",selected:false},{text:"Cyber",selected:false},{text:"Double",selected:false},{text:"Long",selected:false},{text:"Ping",selected:false}],
+		funcionSeleccion:function(res){
+			for(var i=0;i<$scope.AlertasSelect.options.length;i++){
+				if(res.text!=$scope.AlertasSelect.options[i].text)$scope.AlertasSelect.options[i].selected=false;
+			}
+			if(AudioToggle){
+                AudioToggle.playRingTone(res.text.toLowerCase(),true);
+			}
+			//Message.closeSelect();
+		},
+		optionsSelected:function(){
+			for(var i=0;i<$scope.AlertasSelect.options.length;i++)
+				if($scope.AlertasSelect.options[i].selected)return $scope.AlertasSelect.options[i].text
+			return $scope.AlertasSelect.options[0].text
+		},
+		hideTodos:true,
+	}
 	$timeout(function(){
 		$scope.cargandoAjustesN=true;
 		socket.getSocket().on("getAjustesNotificaciones",$scope.cargaAjustes)
-		socket.getSocket().emit("getAjustesNotificaciones")
+		Preferencias.get("Tono",function(res){
+			if(res=="null" || res==null)$scope.TonosSelect.options[0].selected=true;
+			else
+			for(var i=0;i<$scope.TonosSelect.options.length;i++)
+				if(res.toLowerCase()==$scope.TonosSelect.options[i].text.toLowerCase())$scope.TonosSelect.options[i].selected=true
+				
+			Preferencias.get("Alerta",function(res2){
+			socket.getSocket().emit("getAjustesNotificaciones")
+			if(res2=="null" || res2==null)$scope.AlertasSelect.options[0].selected=true;
+			else
+			for(var i=0;i<$scope.AlertasSelect.options.length;i++)
+				if(res2.toLowerCase()==$scope.AlertasSelect.options[i].text.toLowerCase())$scope.AlertasSelect.options[i].selected=true
+			})
+		})
+		
 	},500);
 	
 	$scope.cargaAjustes=function(data){
@@ -120,19 +160,31 @@ angular.module('starter.controllers')
 		if(data){
 			Message.hideModal();
 		}else{
-			Message.alert("sfd","sdfsfds")
+			//error al guardar
+			Message.alert($rootScope.idioma.Menu[3],$rootScope.idioma.Ajustes[16])
 		}
+		
 	}
 	$scope.guarda=function(){
 		socket.getSocket().on("setAjustesNotificaciones",$scope.guardaAjustes)
+		//Preferencias.set("Tono",$rootScope.Usuario.Id)
 		$scope.ANotificaciones.Asuntos=_.compact(_.map($scope.AsuntosSelect.options,function(v,i){if(!v.selected)return parseInt(v.id)}))
 		$scope.ANotificaciones.Estados=_.compact(_.map($scope.EstadosSelect.options,function(v,i){if(!v.selected)return parseInt(v.id)}))
+		var Tonosel=_.compact(_.map($scope.TonosSelect.options,function(v,i){if(v.selected)return v.text}))
+		Preferencias.set("Tono",Tonosel[0].toLowerCase())
+		var Tonosel2=_.compact(_.map($scope.AlertasSelect.options,function(v,i){if(v.selected)return v.text}))
+		Preferencias.set("Alerta",Tonosel2[0].toLowerCase())
 		socket.getSocket().emit("setAjustesNotificaciones",$scope.ANotificaciones)
 		Message.showLoading($rootScope.idioma.General[10]);
 	}
 	$scope.cambiaTono=function(){
 		$scope.TonosSelect.temp=JSON.stringify($scope.TonosSelect.options);
 		$scope.select=$scope.TonosSelect;
+		Message.selectMultiple($scope)
+	}
+	$scope.cambiaAlerta=function(){
+		$scope.AlertasSelect.temp=JSON.stringify($scope.AlertasSelect.options);
+		$scope.select=$scope.AlertasSelect;
 		Message.selectMultiple($scope)
 	}
 })

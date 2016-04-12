@@ -213,6 +213,7 @@ angular.module('starter.controllers')
 			13:"Notificacion",
 			14:"Alerta",
 			15:"Ajustes generales",
+			16:"Error al guardar los ajustes"
 			
 		},
 		Iconos:[
